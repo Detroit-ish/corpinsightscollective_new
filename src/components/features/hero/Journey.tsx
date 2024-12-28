@@ -3,7 +3,7 @@ import { type FC, useState } from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils/cn';
 import TechBusinessIcon from './StageIcon';
-import type { JourneyStage } from '../../journey/types';
+import type { JourneyStage } from '../../hero/types';
 
 const initialStage: JourneyStage = {
   id: 'start',

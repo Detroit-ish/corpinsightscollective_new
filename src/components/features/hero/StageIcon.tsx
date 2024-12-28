@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { cn } from '@/lib/utils/cn';
 import TechBusinessSvg from './TechBusinessSvg';
-import type { TechBusinessIconProps } from '../types';
+import type { TechBusinessIconProps } from './types';
 
 const TechBusinessIcon = React.forwardRef<HTMLButtonElement, TechBusinessIconProps>(
   ({ onClick, className, isActive = false, variant = 'default' }, ref) => {

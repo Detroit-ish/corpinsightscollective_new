@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { BarChart2, Shield, Users } from "lucide-react";
-import { stages } from '@/components/features/journey/circle/stages';
+import { stages } from '@/components/features/hero/stages';
 import JourneyCircle from '@/components/features/journey/circle/JourneyCircle';
 import BusinessJourneyContainer from '@/components/features/journey/business/BusinessJourney';
 import Button from '@/components/ui/button';
