@@ -1,69 +1,64 @@
+// src/components/ui/Button.tsx
 import React from 'react';
-import { Loader2 } from 'lucide-react';
-import { cn } from '@/lib/utils/cn';
-import type { ButtonProps } from '@/types/button';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({
-    className,
-    variant = 'primary',
-    size = 'md',
-    isLoading = false,
-    leftIcon,
-    rightIcon,
-    fullWidth = false,
-    children,
-    disabled,
-    ...props
-  }, ref) => {
-    const baseStyles = 'inline-flex items-center justify-center rounded-lg font-montserrat transition-all focus:outline-none focus:ring-2 focus:ring-offset-2';
-    
-    const variants = {
-      primary: 'bg-brand-primary hover:bg-opacity-90 text-white focus:ring-brand-primary',
-      secondary: 'bg-brand-accent1 hover:bg-opacity-90 text-white focus:ring-brand-accent1',
-      outline: 'border-2 border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white focus:ring-brand-primary',
-      text: 'text-brand-primary hover:bg-brand-primary/10 focus:ring-brand-primary'
-    };
+interface ButtonProps {
+  href?: string;
+  children: React.ReactNode;
+  variant?: 'primary' | 'secondary' | 'white';
+  showArrow?: boolean;
+  className?: string;
+  onClick?: () => void;
+}
 
-    const sizes = {
-      sm: 'px-3 py-1 text-sm',
-      md: 'px-4 py-2',
-      lg: 'px-6 py-3 text-lg'
-    };
+const Button: React.FC<ButtonProps> = ({
+  href,
+  children,
+  variant = 'primary',
+  showArrow = false,
+  className = '',
+  onClick,
+}) => {
+  const baseStyles = "px-6 py-3 rounded-lg font-montserrat text-[18px] font-medium inline-flex items-center justify-center gap-2 transition-all duration-300";
+  
+  const variants = {
+    primary: "bg-gradient-to-r from-brand-accent1-500 to-brand-accent1-600 text-white hover:from-brand-accent1-600 hover:to-brand-accent1-700",
+    secondary: "bg-white/90 text-brand-secondary hover:bg-white",
+    white: "bg-white text-brand-primary hover:bg-opacity-95"
+  };
 
-    const isDisabled = disabled || isLoading;
+  const buttonContent = (
+    <>
+      {children}
+      {showArrow && (
+        <ArrowRight className="group-hover:translate-x-1 transition-transform" />
+      )}
+    </>
+  );
 
+  if (href) {
     return (
-      <button
-        ref={ref}
-        className={cn(
-          baseStyles,
-          variants[variant],
-          sizes[size],
-          isDisabled && 'opacity-70 cursor-not-allowed',
-          fullWidth && 'w-full',
-          className
-        )}
-        disabled={isDisabled}
-        {...props}
+      <Link 
+        href={href}
+        className={`group ${baseStyles} ${variants[variant]} ${className}`}
       >
-        {isLoading ? (
-          <>
-            <Loader2 className="w-4 h-4 animate-spin mr-2" />
-            Loading...
-          </>
-        ) : (
-          <>
-            {leftIcon && <span className="mr-2">{leftIcon}</span>}
-            {children}
-            {rightIcon && <span className="ml-2">{rightIcon}</span>}
-          </>
-        )}
-      </button>
+        {buttonContent}
+      </Link>
     );
   }
-);
 
-Button.displayName = 'Button';
+  return (
+    <motion.button
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
+      onClick={onClick}
+      className={`group ${baseStyles} ${variants[variant]} ${className}`}
+    >
+      {buttonContent}
+    </motion.button>
+  );
+};
 
-export { Button };
+export default Button;

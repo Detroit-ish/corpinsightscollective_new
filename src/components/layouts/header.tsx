@@ -16,29 +16,40 @@ const Header = () => {
   const [isLightOn, setIsLightOn] = useState(false);
 
   return (
-    <header className="bg-gradient-to-r from-brand-primary-500 to-brand-secondary-500 text-white">
-      <nav className="max-w-6xl mx-auto px-4 py-4">
+    <header className="bg-gradient-to-r from-[#007373] via-[#006666] to-[#2B3A42]">
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div className="flex items-center justify-between">
-          {/* Logo & Tagline */}
-          <div className="flex flex-col text-white">
-            <h1 className="text-2xl font-bold">CorpInsights</h1>
-            <p className="text-sm text-white/80">From Dial-up to Digital</p>
-          </div>
+          {/* Logo & Tagline with increased spacing */}
+          <div className="flex flex-col pr-8 lg:pr-16">
+  <h1 className="text-[32px] md:text-[40px] font-playfair font-bold text-white leading-tight">
+    CorpInsights
+  </h1>
+  <p className="text-[14px] md:text-[16px] font-montserrat tracking-wide text-white/90 leading-normal mt-1">
+    From Dial-up to Digital Evolution
+  </p>
+</div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {/* Growth Lab with Lightbulb */}
+          <div className="hidden md:flex items-center space-x-12"> {/* Increased from space-x-10 */}
+            {/* Growth Lab with color pulse */}
             <NavLink 
               href="/growth-lab" 
               icon={
                 <motion.div
-                  animate={{ color: isLightOn ? '#FF6F4F' : '#fff' }}
+                  animate={{ 
+                    color: isLightOn ? 'var(--brand-accent1-500)' : '#fff',
+                  }}
+                  transition={{ 
+                    duration: 1.5,
+                    repeat: isLightOn ? Infinity : 0,
+                    repeatType: "reverse"
+                  }}
                   onHoverStart={() => setIsLightOn(true)}
                   onHoverEnd={() => setIsLightOn(false)}
                 >
                   <Lightbulb 
-                    size={18} 
-                    className={`inline-block mr-1 transition-transform ${isLightOn ? 'scale-110' : 'scale-100'}`}
+                    size={20} 
+                    className="mr-2"
                   />
                 </motion.div>
               }
@@ -49,41 +60,63 @@ const Header = () => {
             <NavLink href="/success-stories">Success Stories</NavLink>
             <NavLink href="/tools-insights">Tools & Insights</NavLink>
             
-            <button className="px-6 py-2.5 bg-brand-accent1 text-white rounded-md hover:bg-opacity-90 transition-all 
-                             transform hover:scale-105 hover:shadow-lg hover:shadow-brand-accent1/20">
+            {/* CTA Button */}
+            <motion.button 
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="px-6 py-3 bg-gradient-to-r from-brand-accent1-500 to-brand-accent1-600
+                        rounded-lg text-white font-montserrat text-[18px] font-semibold
+                        hover:from-brand-accent1-600 hover:to-brand-accent1-700
+                        transition-all duration-300 shadow-lg shadow-brand-accent1-500/20"
+            >
               Start Your Journey
-            </button>
+            </motion.button>
           </div>
 
           {/* Mobile Menu Button */}
-          <button 
+          <motion.button 
+            whileTap={{ scale: 0.95 }}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 text-white hover:bg-white/10 rounded-lg transition-colors"
+            className="md:hidden p-3 text-white hover:bg-white/10 rounded-lg
+                       transition-colors focus:outline-none focus:ring-2 focus:ring-white/20"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          </motion.button>
         </div>
 
         {/* Mobile Navigation */}
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div 
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="md:hidden overflow-hidden"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ type: "spring", stiffness: 300, damping: 25 }}
+              className="md:hidden mt-6 pt-6 border-t border-white/10"
             >
-              <div className="pt-4 pb-3 space-y-3">
-                <MobileNavLink href="/growth-lab">
-                  <Lightbulb size={18} className="inline-block mr-2" />
-                  Growth Lab
-                </MobileNavLink>
+              <div className="space-y-3">
+                <div className="flex items-center">
+                  <motion.div
+                    animate={{ 
+                      color: isLightOn ? 'var(--brand-accent1-500)' : '#fff',
+                    }}
+                    className="mr-2"
+                  >
+                    <Lightbulb size={20} />
+                  </motion.div>
+                  <MobileNavLink href="/growth-lab">Growth Lab</MobileNavLink>
+                </div>
                 <MobileNavLink href="/success-stories">Success Stories</MobileNavLink>
                 <MobileNavLink href="/tools-insights">Tools & Insights</MobileNavLink>
-                <button className="w-full px-4 py-3 bg-brand-accent1 text-white rounded-md 
-                                 hover:bg-opacity-90 transition-colors mt-4">
+                <motion.button 
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full mt-4 px-4 py-3 bg-gradient-to-r from-brand-accent1-500 to-brand-accent1-600
+                            rounded-lg text-white font-montserrat text-[18px] font-semibold
+                            hover:from-brand-accent1-600 hover:to-brand-accent1-700
+                            transition-all duration-300 shadow-lg shadow-brand-accent1-500/20"
+                >
                   Start Your Journey
-                </button>
+                </motion.button>
               </div>
             </motion.div>
           )}
@@ -96,11 +129,15 @@ const Header = () => {
 const NavLink = ({ href, children, icon }: NavLinkProps) => (
   <Link 
     href={href} 
-    className="text-white/80 hover:text-white transition-colors text-sm font-medium tracking-wide 
-               flex items-center group"
+    className="group flex items-center text-white/90 hover:text-white
+               font-montserrat text-[18px] md:text-[20px] font-medium tracking-wide
+               transition-all duration-300"
   >
     {icon}
-    <span className="group-hover:translate-x-0.5 transition-transform">
+    <span className="relative after:absolute after:bottom-[-2px] after:left-0 
+                     after:h-[2px] after:w-0 after:bg-white
+                     after:transition-all after:duration-300 
+                     group-hover:after:w-full">
       {children}
     </span>
   </Link>
@@ -109,8 +146,10 @@ const NavLink = ({ href, children, icon }: NavLinkProps) => (
 const MobileNavLink = ({ href, children }: NavLinkProps) => (
   <Link 
     href={href} 
-    className="block text-white/80 hover:text-white transition-colors text-sm font-medium 
-               tracking-wide py-2 px-2 rounded-lg hover:bg-white/5"
+    className="group text-white/90 hover:text-white
+               font-montserrat text-[18px] font-medium tracking-wide
+               block py-3 px-4 rounded-lg hover:bg-white/10
+               transition-all duration-300"
   >
     {children}
   </Link>

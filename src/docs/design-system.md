@@ -1,48 +1,214 @@
-# Design System Guide
+# CorpInsights Design System Guide 2025
 
-## Colors
-Our brand colors are defined in the CSS variables:
+Our design system embodies the bridge between traditional business wisdom and modern technological innovation. It's crafted to communicate professionalism, growth, and technical capability while maintaining exceptional usability for our B2B audience.
 
-### Primary Colors
-- Primary: #007373 (Teal)
-- Secondary: #2B3A42 (Dark Blue-Grey)
-- Accent: #FF6F4F (Coral)
+## I. Color Architecture
 
-### Background Colors
-- Light Background: #F8F8F8
-- Accent Background: #E0FFFF
+Our color system is strategically designed to guide users through their journey while maintaining visual hierarchy and meaning throughout the interface.
 
-## Typography
-We use three main fonts:
-- Playfair Display: Headings
-- Open Sans: Body text
-- Montserrat: Buttons and accents
+### Primary Color: Teal (#007373)
+This color represents trust, stability, and technological capability. It serves as our core brand identifier and is used for:
+- Primary navigation elements and core interactions
+- Key metrics and data visualization
+- Progress indicators and success states
+- Important links and interactive elements
+- System status indicators
+- Primary buttons and calls-to-action
 
-## Components
-Common components and when to use them:
+### Secondary Color: Dark Blue-Grey (#2B3A42)
+This sophisticated neutral anchors our visual hierarchy and provides structure. It's applied to:
+- Main typography elements
+- Secondary navigation components
+- Content organization
+- Interface frameworks
+- Footer elements
+- Secondary interactive states
 
-### Buttons
-- Primary: Main calls to action
-- Secondary: Alternative actions
-- Text: Subtle actions
+### Accent Color: Coral (#FF6F4F)
+This energetic accent color highlights growth, achievement, and important actions:
+- Growth metrics and positive indicators
+- High-priority calls-to-action
+- Important highlights and emphasis
+- Achievement markers
+- Key conversion points
+- Progress completion states
 
-### Cards
-- White background
-- Subtle shadow
-- Rounded corners
-- Hover effects for interactive cards
+### Surface Colors
+We employ two strategic background colors to create depth and hierarchy:
 
-### Spacing
-- Consistent padding in components
-- Section spacing for visual hierarchy
-- Mobile-friendly margins
+1. Light Grey (#F8F8F8)
+   - Page backgrounds
+   - Card containers
+   - Form fields
+   - Secondary buttons
+   - Neutral spaces
 
-## Layout Guidelines
-- Mobile-first approach
-- Maximum content width: 1280px
-- Standard padding: 1rem (small screens) to 2rem (large screens)
+2. Light Cyan (#E0FFFF)
+   - Active states
+   - Tool backgrounds
+   - Success messages
+   - Selected items
+   - System feedback
 
-## Accessibility
-- Maintain color contrast ratios
-- Include hover and focus states
-- Use semantic HTML elements
+### Strategic Gradient System
+
+Our gradient system adds sophistication and visual interest while maintaining professionalism:
+
+1. Professional Gradient
+   ```css
+   background: linear-gradient(to right, #007373, #2B3A42);
+   ```
+   Used for headers, key sections, and professional containers.
+
+2. Growth Gradient
+   ```css
+   background: linear-gradient(to right, #007373, #FF6F4F);
+   ```
+   Applied to revenue sections, success metrics, and achievement displays.
+
+3. Action Gradient
+   ```css
+   background: linear-gradient(135deg, #FF6F4F, rgba(255, 111, 79, 0.8));
+   ```
+   Reserved for primary CTAs and critical conversion points.
+
+## II. Typography System
+
+Our typography system creates clear hierarchy while maintaining readability across all devices.
+
+### Strategic Font Pairing
+
+1. Playfair Display
+   - Purpose: Commanding headlines and key metrics
+   - Usage: Page titles, hero text, important numbers
+   - Properties: Bold weight, tight tracking
+
+2. Open Sans
+   - Purpose: Body text and general content
+   - Usage: Paragraphs, lists, form labels
+   - Properties: Regular weight, comfortable line height
+
+3. Montserrat
+   - Purpose: Interactive elements and accents
+   - Usage: Buttons, navigation, feature highlights
+   - Properties: Medium weight, slightly increased letter-spacing
+
+### Responsive Scale
+
+We implement a sophisticated mobile-first type scale:
+
+1. Page Titles (H1)
+   - Mobile: 48px
+   - Desktop: 64px
+   - Hero Special Case: 72px
+   - Properties: Playfair Display, Bold, 1.1 line height
+
+2. Section Headers (H2)
+   - Mobile: 36px
+   - Desktop: 48px
+   - Properties: Open Sans, Semibold, 1.2 line height
+
+3. Subsection Headers (H3)
+   - Mobile: 24px
+   - Desktop: 32px
+   - Properties: Open Sans, Semibold, 1.3 line height
+
+4. Body Text
+   - Mobile: 16px
+   - Desktop: 18px
+   - Properties: Open Sans, Regular, 1.6 line height
+
+## III. Component System
+
+Our components are designed for consistency, usability, and scalability.
+
+### Button System
+
+1. Primary Button
+   ```css
+   font-family: Montserrat;
+   font-weight: 600;
+   background: var(--gradient-action);
+   padding: 12px 24px;
+   border-radius: 8px;
+   transition: all 0.2s ease;
+   ```
+
+2. Secondary Button
+   ```css
+   font-family: Montserrat;
+   font-weight: 600;
+   color: var(--brand-primary-500);
+   border: 2px solid currentColor;
+   padding: 12px 24px;
+   border-radius: 8px;
+   ```
+
+### Card System
+
+1. Feature Card
+   ```css
+   background: white;
+   border-radius: 12px;
+   padding: 24px;
+   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+   transition: transform 0.2s ease;
+   ```
+
+2. Metric Card
+   ```css
+   background: var(--gradient-professional);
+   border-radius: 12px;
+   padding: 20px;
+   color: white;
+   ```
+
+## IV. Layout & Spacing
+
+We maintain a consistent rhythm throughout the interface:
+
+### Vertical Spacing
+- Section Margins: 64px (mobile) / 96px (desktop)
+- Component Spacing: 32px (mobile) / 48px (desktop)
+- Element Spacing: 16px (mobile) / 24px (desktop)
+
+### Horizontal Spacing
+- Container Max-Width: 1280px
+- Container Padding: 20px (mobile) / 40px (desktop)
+- Grid Gaps: 20px (mobile) / 32px (desktop)
+
+## V. Interaction & Animation
+
+Our interactions enhance usability while maintaining professionalism:
+
+### Hover States
+- Buttons scale to 1.02
+- Cards lift 2px
+- Links show underlines
+- Color transitions over 0.2s
+- Gradient shifts for enhanced feedback
+
+### Loading States
+- Subtle pulse animations for loading
+- Progress indicators use brand colors
+- Skeleton screens for content loading
+- Smooth fade-in transitions
+
+## VI. Accessibility Guidelines
+
+We maintain WCAG 2.1 AA standards throughout:
+
+- Color contrast ratios meet or exceed 4.5:1
+- Interactive elements have visible focus states
+- All interactions are keyboard-accessible
+- Semantic HTML maintains clear structure
+- Font sizes remain legible at all breakpoints
+
+## Implementation Notes
+
+When implementing this system:
+1. Always use semantic HTML elements
+2. Maintain responsive behavior across all breakpoints
+3. Test interactions across different input methods
+4. Verify color contrast meets accessibility standards
+5. Ensure consistent spacing using the defined scale

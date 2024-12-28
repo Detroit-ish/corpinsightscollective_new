@@ -3,71 +3,96 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Design Tokens - Color System */
+/* Design System 2025 - Comprehensive Architecture */
 :root {
-  /* Brand Colors */
-  --brand-primary-50: #E6F3F3;
-  --brand-primary-100: #CCE7E7;
-  --brand-primary-200: #99CFCF;
-  --brand-primary-300: #66B7B7;
-  --brand-primary-400: #339F9F;
-  --brand-primary-500: #007373; /* Primary brand color */
-  --brand-primary-600: #005C5C;
-  --brand-primary-700: #004444;
-  --brand-primary-800: #002D2D;
-  --brand-primary-900: #001515;
-
-  /* Secondary Colors */
-  --brand-secondary-50: #E8EBED;
-  --brand-secondary-100: #D1D6DA;
-  --brand-secondary-200: #A3ADB5;
-  --brand-secondary-300: #748491;
-  --brand-secondary-400: #465B6C;
-  --brand-secondary-500: #2B3A42; /* Secondary brand color */
-  --brand-secondary-600: #222E35;
-  --brand-secondary-700: #1A2328;
-  --brand-secondary-800: #11171A;
-  --brand-secondary-900: #090C0D;
-
-  /* Accent Colors */
-  --brand-accent1-50: #FFF2EF;
-  --brand-accent1-100: #FFE5DF;
-  --brand-accent1-200: #FFCBBF;
-  --brand-accent1-300: #FFB19F;
-  --brand-accent1-400: #FF977F;
-  --brand-accent1-500: #FF6F4F; /* Accent1 brand color */
-  --brand-accent1-600: #CC593F;
-  --brand-accent1-700: #99422F;
-  --brand-accent1-800: #662C20;
-  --brand-accent1-900: #331610;
-
-  /* Background Colors */
-  --brand-accent2: #F8F8F8;
-  --brand-accent3: #E0FFFF;
+  /*=============================================
+    Color System - Strategic Business Elements
+  =============================================*/
   
-  /* Semantic Colors */
+  /* Primary Teal - Core Business & Trust */
+  --brand-primary-50: #E6F3F3;   /* Subtle backgrounds, disabled states */
+  --brand-primary-100: #CCE7E7;  /* Hover backgrounds, secondary elements */
+  --brand-primary-200: #99CFCF;  /* Secondary indicators, progress states */
+  --brand-primary-300: #66B7B7;  /* Active states, tertiary elements */
+  --brand-primary-400: #339F9F;  /* Supporting elements, hover states */
+  --brand-primary-500: #007373;  /* Primary actions, key metrics, core elements */
+  --brand-primary-600: #005C5C;  /* Hover states for primary elements */
+  --brand-primary-700: #004444;  /* Active/pressed states */
+  --brand-primary-800: #002D2D;  /* Deep accents, focused states */
+  --brand-primary-900: #001515;  /* Text on light backgrounds */
+
+  /* Secondary Dark Blue-Grey - Professional Structure */
+  --brand-secondary-50: #E8EBED;   /* Light mode backgrounds, subtle elements */
+  --brand-secondary-100: #D1D6DA;  /* Subtle borders, dividers */
+  --brand-secondary-200: #A3ADB5;  /* Disabled text, inactive states */
+  --brand-secondary-300: #748491;  /* Secondary text, supporting content */
+  --brand-secondary-400: #465B6C;  /* Primary text, body content */
+  --brand-secondary-500: #2B3A42;  /* Headlines, key content, navigation */
+  --brand-secondary-600: #222E35;  /* Dense content areas, footer elements */
+  --brand-secondary-700: #1A2328;  /* Hover states for secondary elements */
+  --brand-secondary-800: #11171A;  /* Active states, deep backgrounds */
+  --brand-secondary-900: #090C0D;  /* Highest contrast text, deep accents */
+
+  /* Accent Coral - Growth & Achievement */
+  --brand-accent1-50: #FFF2EF;   /* Success backgrounds, subtle indicators */
+  --brand-accent1-100: #FFE5DF;  /* Highlight areas, secondary success states */
+  --brand-accent1-200: #FFCBBF;  /* Progress indicators, achievement markers */
+  --brand-accent1-300: #FFB19F;  /* Supporting elements, tertiary actions */
+  --brand-accent1-400: #FF977F;  /* Hover states for accent elements */
+  --brand-accent1-500: #FF6F4F;  /* Primary accent, growth metrics, CTAs */
+  --brand-accent1-600: #CC593F;  /* Hover states for accent actions */
+  --brand-accent1-700: #99422F;  /* Active/pressed states for accents */
+  --brand-accent1-800: #662C20;  /* Deep accents, focused states */
+  --brand-accent1-900: #331610;  /* High contrast accent text */
+
+  /* Surface & Background System */
+  --brand-accent2: #F8F8F8;      /* Page backgrounds, cards, containers */
+  --brand-accent3: #E0FFFF;      /* Tool backgrounds, active states */
+
+  /* Strategic Gradient System */
+  --gradient-professional: linear-gradient(to right, var(--brand-primary-500), var(--brand-secondary-500));
+  --gradient-growth: linear-gradient(to right, var(--brand-primary-500), var(--brand-accent1-500));
+  --gradient-action: linear-gradient(135deg, var(--brand-accent1-500), rgba(255, 111, 79, 0.8));
+  --gradient-surface: linear-gradient(to bottom right, var(--brand-accent2), rgba(224, 255, 255, 0.3));
+  --gradient-tech: linear-gradient(45deg, rgba(43, 58, 66, 0.05) 25%, transparent 25%);
+
+  /* System Feedback */
   --color-success: #10B981;
   --color-warning: #F59E0B;
   --color-error: #EF4444;
   --color-info: #3B82F6;
-}
 
-/* Typography Scale */
-:root {
-  --font-size-xs: 0.75rem;
-  --font-size-sm: 0.875rem;
-  --font-size-base: 1rem;
-  --font-size-lg: 1.125rem;
-  --font-size-xl: 1.25rem;
-  --font-size-2xl: 1.5rem;
-  --font-size-3xl: 1.875rem;
-  --font-size-4xl: 2.25rem;
-  --font-size-5xl: 3rem;
+  /*=============================================
+    Typography System - Professional Hierarchy
+  =============================================*/
   
-  /* Line Heights */
-  --line-height-tight: 1.25;
-  --line-height-normal: 1.5;
-  --line-height-relaxed: 1.75;
+  /* Core Text Sizes - Mobile First with Desktop Refinements */
+  --font-size-body: 1rem;        /* 16px mobile */
+  --font-size-body-desktop: 1.125rem;  /* 18px desktop */
+  
+  /* Strategic Heading Scale */
+  --font-size-h1: 3rem;          /* 48px mobile */
+  --font-size-h1-desktop: 4rem;  /* 64px desktop */
+  --font-size-h1-hero: 4.5rem;   /* 72px desktop (homepage) */
+  
+  --font-size-h2: 2.25rem;       /* 36px mobile */
+  --font-size-h2-desktop: 3rem;  /* 48px desktop */
+  
+  --font-size-h3: 1.5rem;        /* 24px mobile */
+  --font-size-h3-desktop: 2rem;  /* 32px desktop */
+  
+  --font-size-h4: 1.125rem;      /* 18px mobile */
+  --font-size-h4-desktop: 1.25rem; /* 20px desktop */
+
+  /* Special Purpose Text */
+  --font-size-metric: 2rem;      /* 32px mobile */
+  --font-size-metric-desktop: 3rem; /* 48px desktop */
+  --font-size-technical: 0.875rem;  /* 14px consistent */
+
+  /* Typography Properties */
+  --line-height-tight: 1.25;    /* Headings, condensed text */
+  --line-height-normal: 1.5;    /* Body text, general content */
+  --line-height-relaxed: 1.75;  /* Long-form reading */
 
   /* Font Weights */
   --font-weight-normal: 400;
@@ -75,20 +100,26 @@
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
 
-  /* Spacing Scale */
+  /*=============================================
+    Spacing System - Consistent Rhythm
+  =============================================*/
+  
   --spacing-px: 1px;
   --spacing-0: 0;
-  --spacing-1: 0.25rem;
-  --spacing-2: 0.5rem;
-  --spacing-3: 0.75rem;
-  --spacing-4: 1rem;
-  --spacing-6: 1.5rem;
-  --spacing-8: 2rem;
-  --spacing-12: 3rem;
-  --spacing-16: 4rem;
+  --spacing-1: 0.25rem;  /* 4px */
+  --spacing-2: 0.5rem;   /* 8px */
+  --spacing-3: 0.75rem;  /* 12px */
+  --spacing-4: 1rem;     /* 16px */
+  --spacing-6: 1.5rem;   /* 24px */
+  --spacing-8: 2rem;     /* 32px */
+  --spacing-12: 3rem;    /* 48px */
+  --spacing-16: 4rem;    /* 64px */
 }
 
-/* Base Styles */
+/*=============================================
+  Base Styles - Core HTML Elements
+=============================================*/
+
 @layer base {
   html {
     @apply text-brand-secondary-500 antialiased;
@@ -98,22 +129,64 @@
   body {
     @apply bg-brand-accent2 min-h-screen;
   }
-
-  h1, h2, h3, h4, h5 {
-    @apply font-playfair tracking-tight;
-  }
-
-  p, span, div {
-    @apply font-opensans;
-  }
-
-  button, .accent-text {
-    @apply font-montserrat;
-  }
 }
 
-/* Component Classes */
+/*=============================================
+  Typography Implementation
+=============================================*/
+
 @layer components {
+  .text-body {
+    @apply text-[length:var(--font-size-body)] md:text-[length:var(--font-size-body-desktop)]
+           leading-relaxed text-brand-secondary-400 font-opensans;
+  }
+
+  .text-h1 {
+    @apply font-playfair font-bold
+           text-[length:var(--font-size-h1)] md:text-[length:var(--font-size-h1-desktop)]
+           leading-tight text-brand-secondary-500;
+  }
+
+  .text-h1-hero {
+    @apply font-playfair font-bold
+           text-[length:var(--font-size-h1)] md:text-[length:var(--font-size-h1-hero)]
+           leading-tight;
+  }
+
+  .text-h2 {
+    @apply font-opensans font-semibold
+           text-[length:var(--font-size-h2)] md:text-[length:var(--font-size-h2-desktop)]
+           leading-tight text-brand-secondary-500;
+  }
+
+  .text-h3 {
+    @apply font-opensans font-semibold
+           text-[length:var(--font-size-h3)] md:text-[length:var(--font-size-h3-desktop)]
+           leading-snug text-brand-secondary-500;
+  }
+
+  .text-h4 {
+    @apply font-opensans font-semibold
+           text-[length:var(--font-size-h4)] md:text-[length:var(--font-size-h4-desktop)]
+           leading-normal text-brand-secondary-500;
+  }
+
+  .text-metric {
+    @apply font-playfair font-bold
+           text-[length:var(--font-size-metric)] md:text-[length:var(--font-size-metric-desktop)]
+           leading-none text-brand-primary-500;
+  }
+
+  .text-technical {
+    @apply font-opensans
+           text-[length:var(--font-size-technical)]
+           leading-normal text-brand-secondary-500;
+  }
+
+  /*=============================================
+    Component Classes - Reusable UI Elements
+  =============================================*/
+
   .container-padding {
     @apply px-4 sm:px-6 lg:px-8;
   }
@@ -122,45 +195,59 @@
     @apply py-12 sm:py-16 lg:py-24;
   }
 
-  /* Button Base */
+  /* Strategic Button System */
   .btn {
     @apply inline-flex items-center justify-center rounded-lg font-montserrat
            transition-all duration-200 ease-in-out
            focus:outline-none focus:ring-2 focus:ring-offset-2;
   }
 
-  /* Button Variants */
   .btn-primary {
-    @apply btn bg-brand-primary-500 text-white
-           hover:bg-brand-primary-600 active:bg-brand-primary-700
+    @apply btn bg-gradient-to-r from-brand-primary-500 to-brand-primary-600 text-white
+           hover:from-brand-primary-600 hover:to-brand-primary-700
+           active:from-brand-primary-700 active:to-brand-primary-800
            focus:ring-brand-primary-500;
   }
 
   .btn-secondary {
-    @apply btn bg-brand-accent1-500 text-white
-           hover:bg-brand-accent1-600 active:bg-brand-accent1-700
+    @apply btn bg-gradient-to-r from-brand-accent1-500 to-brand-accent1-600 text-white
+           hover:from-brand-accent1-600 hover:to-brand-accent1-700
+           active:from-brand-accent1-700 active:to-brand-accent1-800
            focus:ring-brand-accent1-500;
   }
 
-  /* Card Styles */
+  /* Enhanced Card System */
   .card {
-    @apply bg-white rounded-lg shadow-sm transition-shadow duration-200
-           hover:shadow-md;
+    @apply bg-white rounded-lg shadow-sm transition-all duration-200
+           hover:shadow-md hover:translate-y-[-2px];
   }
 
+  .feature-card {
+    @apply card p-6 bg-gradient-surface;
+  }
+
+  .metric-card {
+    @apply card p-6 bg-gradient-professional text-white;
+  }
+
+  /* Interactive Elements */
   .journey-node {
     @apply absolute rounded-full flex items-center justify-center 
-           transition-all duration-300 shadow-md hover:shadow-lg;
+           transition-all duration-300 shadow-md hover:shadow-lg
+           bg-gradient-to-r from-brand-primary-500 to-brand-accent1-500;
   }
 
-  /* Form Controls */
   .form-input {
-    @apply w-full rounded-lg border-gray-300 shadow-sm
-           focus:border-brand-primary-500 focus:ring-brand-primary-500;
+    @apply w-full rounded-lg border-brand-secondary-200 shadow-sm
+           focus:border-brand-primary-500 focus:ring-brand-primary-500
+           transition-colors duration-200;
   }
 }
 
-/* Utility Classes */
+/*=============================================
+  Utility Classes - Helper Functions
+=============================================*/
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -168,5 +255,18 @@
 
   .text-gradient {
     @apply bg-clip-text text-transparent;
+  }
+
+  /* Strategic Gradient Utilities */
+  .gradient-professional {
+    @apply bg-gradient-to-r from-brand-primary-500 to-brand-secondary-500;
+  }
+
+  .gradient-growth {
+    @apply bg-gradient-to-r from-brand-primary-500 to-brand-accent1-500;
+  }
+
+  .gradient-action {
+    @apply bg-gradient-135 from-brand-accent1-500 to-brand-accent1-400;
   }
 }
