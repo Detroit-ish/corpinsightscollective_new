@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import JourneyCircle from '@/components/features/journey/circle/JourneyCircle';
+import JourneyCircle from './JourneyCircle';
+import { stages } from './stages';
 import Button from '@/components/ui/button';
 
 export default function Hero() {
@@ -10,7 +11,7 @@ export default function Hero() {
     <section className="relative min-h-screen flex items-center">
       {/* Background with gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-brand-primary-500 via-brand-secondary-500 to-brand-primary-700">
-        <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10" />
+        <div className="absolute inset-0 opacity-10" />
       </div>
 
       {/* Main Content Container */}
@@ -29,15 +30,6 @@ export default function Hero() {
                   stages={stages}
                   activeStage={activeStage}
                   onStageClick={setActiveStage}
-                />
-              </div>
-              
-              {/* Interactive Elements Overlay */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <motion.div 
-                  className="w-1/3 h-1/3 rounded-full bg-white/5 backdrop-blur-sm"
-                  animate={{ scale: [1, 1.1, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
                 />
               </div>
             </motion.div>
