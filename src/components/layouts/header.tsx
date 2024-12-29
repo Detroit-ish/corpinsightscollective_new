@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Lightbulb } from 'lucide-react';
 import Link from 'next/link';
@@ -11,27 +11,59 @@ type NavLinkProps = {
   icon?: React.ReactNode;
 };
 
-const Header = () => {
+interface HeaderProps {
+  currentSection?: string;
+}
+
+const Header: React.FC<HeaderProps> = ({ currentSection = 'hero' }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLightOn, setIsLightOn] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  // Dynamic tagline based on section
+  const sectionTaglines = {
+    hero: 'From Dial-up to Digital Evolution',
+    market: 'Market Analysis & Growth Strategy',
+    journey: 'Your Digital Transformation Journey',
+    tools: 'Strategic Tools & Insights',
+    success: 'Success Stories & Case Studies'
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 20;
+      setScrolled(isScrolled);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <header className="bg-gradient-to-r from-[#007373] via-[#006666] to-[#2B3A42]">
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300
+      ${scrolled 
+        ? 'bg-[#007373]/80 backdrop-blur-md py-4' 
+        : 'bg-gradient-to-r from-[#007373] via-[#006666] to-[#2B3A42] py-6'}`}>
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo & Tagline with increased spacing */}
           <div className="flex flex-col pr-8 lg:pr-16">
-  <h1 className="text-[32px] md:text-[40px] font-playfair font-bold text-white leading-tight">
-    CorpInsights
-  </h1>
-  <p className="text-[14px] md:text-[16px] font-montserrat tracking-wide text-white/90 leading-normal mt-1">
-    From Dial-up to Digital Evolution
-  </p>
-</div>
+            <h1 className="text-[32px] md:text-[40px] font-playfair font-bold text-white leading-tight">
+              CorpInsights
+            </h1>
+            <motion.p 
+              key={currentSection}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              className="text-[14px] md:text-[16px] font-montserrat tracking-wide text-white/90 leading-normal mt-1"
+            >
+              {sectionTaglines[currentSection as keyof typeof sectionTaglines]}
+            </motion.p>
+          </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-12"> {/* Increased from space-x-10 */}
-            {/* Growth Lab with color pulse */}
+          <div className="hidden md:flex items-center space-x-12">
             <NavLink 
               href="/growth-lab" 
               icon={
@@ -47,10 +79,7 @@ const Header = () => {
                   onHoverStart={() => setIsLightOn(true)}
                   onHoverEnd={() => setIsLightOn(false)}
                 >
-                  <Lightbulb 
-                    size={20} 
-                    className="mr-2"
-                  />
+                  <Lightbulb size={20} className="mr-2" />
                 </motion.div>
               }
             >
