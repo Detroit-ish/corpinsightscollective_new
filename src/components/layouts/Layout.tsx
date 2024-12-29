@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import Header from './header';
+import Header from './Header';
 import useCurrentSection from '@/hooks/useCurrentSection';
 
 interface LayoutProps {
