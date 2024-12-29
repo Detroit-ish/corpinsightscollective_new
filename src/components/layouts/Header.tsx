@@ -1,24 +1,25 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Lightbulb } from 'lucide-react';
-import Link from 'next/link';
-
-type NavLinkProps = {
-  href: string;
-  children: React.ReactNode;
-  icon?: React.ReactNode;
-};
+import Button from '@/components/ui/button';
 
 interface HeaderProps {
   currentSection?: string;
 }
 
+interface NavLinkProps {
+  href: string;
+  children: React.ReactNode;
+  icon?: React.ReactNode;
+}
+
 const Header: React.FC<HeaderProps> = ({ currentSection = 'hero' }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isLightOn, setIsLightOn] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isLightOn, setIsLightOn] = useState(false);
 
   // Dynamic tagline based on section
   const sectionTaglines = {
@@ -40,30 +41,35 @@ const Header: React.FC<HeaderProps> = ({ currentSection = 'hero' }) => {
   }, []);
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300
-      ${scrolled 
-        ? 'bg-[#007373]/80 backdrop-blur-md py-4' 
-        : 'bg-gradient-to-r from-[#007373] via-[#006666] to-[#2B3A42] py-6'}`}>
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          {/* Logo & Tagline with increased spacing */}
-          <div className="flex flex-col pr-8 lg:pr-16">
-            <h1 className="text-[32px] md:text-[40px] font-playfair font-bold text-white leading-tight">
-              CorpInsights
-            </h1>
+    <header 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300
+        ${scrolled ? 'py-2' : 'py-4'}
+        ${scrolled 
+          ? 'bg-brand-primary-900/80 backdrop-blur-md shadow-lg' 
+          : 'gradient-professional'}`}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <nav className="flex items-center justify-between">
+          {/* Logo and Tagline */}
+          <div className="flex flex-col space-y-1">
+            <Link href="/" className="flex items-center">
+              <h1 className="text-h2 text-white font-playfair">
+                CorpInsights
+              </h1>
+            </Link>
             <motion.p 
               key={currentSection}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              className="text-[14px] md:text-[16px] font-montserrat tracking-wide text-white/90 leading-normal mt-1"
+              className="hidden md:block text-white/80 font-montserrat text-sm tracking-wide"
             >
               {sectionTaglines[currentSection as keyof typeof sectionTaglines]}
             </motion.p>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-12">
+          <div className="hidden md:flex items-center space-x-8">
             <NavLink 
               href="/growth-lab" 
               icon={
@@ -71,11 +77,7 @@ const Header: React.FC<HeaderProps> = ({ currentSection = 'hero' }) => {
                   animate={{ 
                     color: isLightOn ? 'var(--brand-accent1-500)' : '#fff',
                   }}
-                  transition={{ 
-                    duration: 1.5,
-                    repeat: isLightOn ? Infinity : 0,
-                    repeatType: "reverse"
-                  }}
+                  transition={{ duration: 0.3 }}
                   onHoverStart={() => setIsLightOn(true)}
                   onHoverEnd={() => setIsLightOn(false)}
                 >
@@ -85,45 +87,35 @@ const Header: React.FC<HeaderProps> = ({ currentSection = 'hero' }) => {
             >
               Growth Lab
             </NavLink>
-            
             <NavLink href="/success-stories">Success Stories</NavLink>
             <NavLink href="/tools-insights">Tools & Insights</NavLink>
-            
-            {/* CTA Button */}
-            <motion.button 
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="px-6 py-3 bg-gradient-to-r from-brand-accent1-500 to-brand-accent1-600
-                        rounded-lg text-white font-montserrat text-[18px] font-semibold
-                        hover:from-brand-accent1-600 hover:to-brand-accent1-700
-                        transition-all duration-300 shadow-lg shadow-brand-accent1-500/20"
-            >
+            <Button variant="secondary" size="lg" showArrow>
               Start Your Journey
-            </motion.button>
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
           <motion.button 
             whileTap={{ scale: 0.95 }}
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="md:hidden p-3 text-white hover:bg-white/10 rounded-lg
                        transition-colors focus:outline-none focus:ring-2 focus:ring-white/20"
           >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </motion.button>
-        </div>
+        </nav>
 
         {/* Mobile Navigation */}
         <AnimatePresence>
-          {isMenuOpen && (
+          {mobileMenuOpen && (
             <motion.div 
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              transition={{ type: "spring", stiffness: 300, damping: 25 }}
+              transition={{ type: "tween", duration: 0.2 }}
               className="md:hidden mt-6 pt-6 border-t border-white/10"
             >
-              <div className="space-y-3">
+              <div className="flex flex-col space-y-4">
                 <div className="flex items-center">
                   <motion.div
                     animate={{ 
@@ -137,20 +129,14 @@ const Header: React.FC<HeaderProps> = ({ currentSection = 'hero' }) => {
                 </div>
                 <MobileNavLink href="/success-stories">Success Stories</MobileNavLink>
                 <MobileNavLink href="/tools-insights">Tools & Insights</MobileNavLink>
-                <motion.button 
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full mt-4 px-4 py-3 bg-gradient-to-r from-brand-accent1-500 to-brand-accent1-600
-                            rounded-lg text-white font-montserrat text-[18px] font-semibold
-                            hover:from-brand-accent1-600 hover:to-brand-accent1-700
-                            transition-all duration-300 shadow-lg shadow-brand-accent1-500/20"
-                >
+                <Button variant="secondary" size="lg" showArrow fullWidth>
                   Start Your Journey
-                </motion.button>
+                </Button>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
-      </nav>
+      </div>
     </header>
   );
 };
@@ -159,7 +145,7 @@ const NavLink = ({ href, children, icon }: NavLinkProps) => (
   <Link 
     href={href} 
     className="group flex items-center text-white/90 hover:text-white
-               font-montserrat text-[18px] md:text-[20px] font-medium tracking-wide
+               font-montserrat text-[18px] font-medium tracking-wide
                transition-all duration-300"
   >
     {icon}
@@ -175,9 +161,9 @@ const NavLink = ({ href, children, icon }: NavLinkProps) => (
 const MobileNavLink = ({ href, children }: NavLinkProps) => (
   <Link 
     href={href} 
-    className="group text-white/90 hover:text-white
+    className="block py-3 px-4 rounded-lg
+               text-white/90 hover:text-white hover:bg-white/10
                font-montserrat text-[18px] font-medium tracking-wide
-               block py-3 px-4 rounded-lg hover:bg-white/10
                transition-all duration-300"
   >
     {children}

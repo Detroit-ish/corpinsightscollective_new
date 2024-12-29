@@ -1,7 +1,7 @@
 import { Metadata, Viewport } from "next"
 import { Playfair_Display, Open_Sans, Montserrat } from "next/font/google";
 import "@/styles/globals.css";
-import Header from "@/components/layouts/header";
+import Header from "@/components/layouts/Header";
 import Footer from "@/components/layouts/footer";
 
 // Font configurations
