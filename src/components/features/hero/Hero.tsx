@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import JourneyCircle from './JourneyCircle';
+import JourneyCircle from './JourneyCircle/index';
 import { stages } from './stages';
 import Button from '@/components/ui/button';
 
