@@ -1,48 +1,91 @@
 # CorpInsights Website
 
 ## Project Overview
-A Next.js website showcasing business and technology solutions. The site aims to provide a professional platform to share services and insights with potential clients.
+A modern Progressive Web Application built with Next.js 15, showcasing business and technology solutions. Our platform delivers a seamless, responsive experience for sharing professional services and insights.
 
 ## Key Features
-- Responsive design using Tailwind CSS
-- Interactive business journey visualization
-- Progressive Web App (PWA) capabilities
-- Modern animations with Framer Motion
+- 📱 Progressive Web App (PWA) capabilities
+- 🎨 Responsive design with Tailwind CSS
+- 🚀 Modern animations powered by Framer Motion
+- 🔍 SEO-optimized structure
+- ♿ Accessibility-first approach
+- 📊 Interactive business journey visualization
 
 ## Tech Stack
-- Next.js 15.0.2
-- React 18.2.0
-- Tailwind CSS
-- TypeScript
-- Framer Motion for animations
+- **Framework**: Next.js 15.0.2
+- **UI Library**: React 18.2.0
+- **Styling**: Tailwind CSS 3.4.1
+- **Language**: TypeScript 5
+- **Animations**: Framer Motion 11
+- **Testing**: Jest + React Testing Library
+- **Code Quality**: ESLint + Prettier
+
+## Getting Started
+
+### Prerequisites
+- Node.js 18+ (LTS recommended)
+- npm or yarn
+
+### Installation
+```bash
+git clone https://github.com/Detroit-ish/corpinsightscollective_new.git
+cd corpinsightscollective_new
+npm install
+```
+
+### Development
+```bash
+npm run dev     # Start development server
+npm run test    # Run tests
+npm run build   # Create production build
+npm run start   # Start production server
+```
 
 ## Project Structure
-- `/src/components`: Reusable UI components
-- `/src/app`: Page components and routing
-- `/src/styles`: Global styles and Tailwind configuration
-- `/public`: Static assets and icons
+```
+src/
+├── app/                 # Next.js app directory
+├── components/         # Reusable UI components
+├── lib/               # Utility functions and helpers
+├── styles/            # Global styles and Tailwind config
+└── types/             # TypeScript type definitions
+```
 
-## Development
-To run this project locally:
+## Development Guidelines
+- Follow TypeScript best practices
+- Write tests for new components
+- Maintain accessibility standards
+- Keep components modular and reusable
+- Use Tailwind for styling
+- Document new features
 
-1. Clone the repository
-2. Install dependencies: `npm install`
-3. Start development server: `npm run dev`
-4. Open http://localhost:3000
-
-## Design Decisions
-- Using Tailwind for consistent styling and rapid development
-- Implementing PWA features for better user experience
-- Component-based architecture for maintainability
-- TypeScript for type safety and better development experience
-
-## Roadmap
+## 2024 Roadmap
+### Q1 2024
 - [ ] Complete main service pages
-- [ ] Add portfolio/case studies section
-- [ ] Implement contact form
-- [ ] Add blog/resources section
+- [ ] Implement core PWA features
+- [ ] Set up CI/CD pipeline
 
-## Notes
-- Remember to update PWA manifest when adding new features
-- Keep accessibility in mind when adding new components
-- Test on multiple devices and browsers
+### Q2 2024
+- [ ] Add portfolio/case studies
+- [ ] Implement contact form
+- [ ] Add analytics
+
+### Q3 2024
+- [ ] Add blog/resources section
+- [ ] Implement user authentication
+- [ ] Add interactive features
+
+### Q4 2024
+- [ ] Performance optimization
+- [ ] Enhanced PWA features
+- [ ] Content management system
+
+## Contributing
+1. Create a feature branch from develop
+2. Implement changes
+3. Add tests
+4. Submit pull request to develop
+
+## Deployment
+- Development: Automatic deployment from develop branch
+- Production: Manual deployment after QA
