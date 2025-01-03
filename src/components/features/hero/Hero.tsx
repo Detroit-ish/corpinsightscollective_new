@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import JourneyCircle from './JourneyCircle/index';
+import JourneyCircle from './JourneyCircle';
 import { stages } from './stages';
-import Button from '@/components/ui/button';
+import Button from '@/components/ui/Button';
 
 export default function Hero() {
   const [activeStage, setActiveStage] = useState(1);
