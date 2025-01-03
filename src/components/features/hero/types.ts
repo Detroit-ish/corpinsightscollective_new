@@ -1,4 +1,4 @@
-// src/components/features/journey/types.ts
+// src/components/features/hero/types.ts
 
 // Stage Status Types
 export type StageStatus = 'completed' | 'active' | 'upcoming';
