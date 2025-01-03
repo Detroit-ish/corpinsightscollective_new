@@ -4,8 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { BarChart2, Shield, Users } from "lucide-react";
 import Hero from '@/components/features/hero/Hero';
-import BusinessJourneyContainer from '@/components/features/journey/business/BusinessJourney';
-import Button from '@/components/ui/button';
+import Button from '@/components/ui/Button';
 
 export default function Home() {
   return (
@@ -73,7 +72,7 @@ export default function Home() {
             Ready to Transform Your Business?
           </h2>
           <p className="mt-6 text-[18px] md:text-[20px] text-white/90 max-w-2xl mx-auto font-opensans">
-            Let's explore how we can help you achieve sustainable growth with ethical tech solutions.
+            Let&apos;s explore how we can help you achieve sustainable growth with ethical tech solutions.
           </p>
           <div className="mt-10">
             <Button href="/consultation" variant="white" showArrow>
