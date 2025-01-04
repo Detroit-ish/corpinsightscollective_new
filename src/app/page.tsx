@@ -5,12 +5,16 @@ import { motion } from 'framer-motion';
 import { BarChart2, Shield, Users } from "lucide-react";
 import Hero from '@/components/features/hero/Hero';
 import Button from '@/components/ui/Button';
+import { PainPoints } from '@/components/features/pain-points';
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* New Hero Section */}
       <Hero />
+
+      {/* Pain Points Section */}
+      <PainPoints />
 
       {/* Features Section */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 bg-brand-accent2">
