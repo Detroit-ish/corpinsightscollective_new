@@ -55,8 +55,8 @@ export const PainPointCard = ({
         </p>
         
         <div className="flex items-center gap-6">
-          <div className="w-20 h-20 rounded-full bg-[#FF6F4F] flex items-center justify-center">
-            <span className="text-3xl font-bold text-white">{data.stats.value}</span>
+          <div className="w-20 h-20 lg:w-24 lg:h-24 rounded-full bg-[#FF6F4F] flex items-center justify-center">
+            <span className="text-3xl lg:text-4xl font-bold text-white">{data.stats.value}</span>
           </div>
           <p className="flex-1 text-[#2B3A42]/80 font-opensans">
             {data.stats.context}
@@ -77,7 +77,7 @@ export const PainPointCard = ({
   const SolutionsView = () => (
     <div className="h-full flex flex-col space-y-6">
       {/* Quick Win */}
-      <div className="flex-1 bg-[#007373]/5 rounded-lg p-6">
+      <div className="flex-1 bg-[#007373]/5 rounded-lg p-6 lg:hover:shadow-md lg:transition-shadow">
         <div className="flex items-center gap-3 mb-4">
           <Zap className="text-[#007373]" />
           <h4 className="font-playfair font-bold text-[#007373]">
@@ -93,7 +93,7 @@ export const PainPointCard = ({
       </div>
 
       {/* Systemic Fix */}
-      <div className="flex-1 bg-[#FF6F4F]/5 rounded-lg p-6">
+      <div className="flex-1 bg-[#FF6F4F]/5 rounded-lg p-6 lg:hover:shadow-md lg:transition-shadow">
         <div className="flex items-center gap-3 mb-4">
           <Box className="text-[#FF6F4F]" />
           <h4 className="font-playfair font-bold text-[#FF6F4F]">
@@ -120,46 +120,57 @@ export const PainPointCard = ({
   return (
     <div className={cn(
       "w-full",
-      // Mobile: Vertical stack with swipe
-      "block lg:hidden",
       className
     )}>
-      <motion.div
-        className="relative w-full aspect-[3/4] touch-none"
-        drag
-        dragDirectionLock
-        dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
-        dragElastic={0.9}
-        onDragStart={handleDragStart}
-        onDragEnd={handleDragEnd}
-        initial={false}
-      >
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={isExpanded ? 'solution' : 'main'}
-            initial={{ y: isExpanded ? 100 : -100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: isExpanded ? -100 : 100, opacity: 0 }}
-            transition={{
-              type: "spring",
-              stiffness: 300,
-              damping: 30
-            }}
-            className="absolute w-full h-full bg-white rounded-xl shadow-lg p-6"
-          >
-            {isExpanded ? <SolutionsView /> : <MainView />}
-          </motion.div>
-        </AnimatePresence>
-      </motion.div>
+      {/* Mobile View */}
+      <div className="block lg:hidden">
+        <motion.div
+          className="relative w-full aspect-[3/4] touch-none"
+          drag
+          dragDirectionLock
+          dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
+          dragElastic={0.9}
+          onDragStart={handleDragStart}
+          onDragEnd={handleDragEnd}
+          initial={false}
+        >
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={isExpanded ? 'solution' : 'main'}
+              initial={{ y: isExpanded ? 100 : -100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: isExpanded ? -100 : 100, opacity: 0 }}
+              transition={{
+                type: "spring",
+                stiffness: 300,
+                damping: 30
+              }}
+              className="absolute w-full h-full bg-white rounded-xl shadow-lg p-6"
+            >
+              {isExpanded ? <SolutionsView /> : <MainView />}
+            </motion.div>
+          </AnimatePresence>
+        </motion.div>
+      </div>
 
       {/* Desktop Layout */}
       <div className="hidden lg:grid lg:grid-cols-[1fr_1fr] lg:gap-8">
-        <div className="bg-white rounded-xl shadow-lg p-8">
+        <motion.div 
+          className="bg-white rounded-xl shadow-lg p-8"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.3 }}
+        >
           <MainView />
-        </div>
-        <div className="bg-white rounded-xl shadow-lg p-8">
+        </motion.div>
+        <motion.div 
+          className="bg-white rounded-xl shadow-lg p-8"
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.3 }}
+        >
           <SolutionsView />
-        </div>
+        </motion.div>
       </div>
     </div>
   );
