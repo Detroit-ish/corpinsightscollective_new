@@ -10,6 +10,7 @@ A modern Progressive Web Application built with Next.js 15, showcasing business 
 - 🔍 SEO-optimized structure
 - ♿ Accessibility-first approach
 - 📊 Interactive business journey visualization
+- 🎯 Adaptive pain point cards with mobile-first design
 
 ## Tech Stack
 - **Framework**: Next.js 15.0.2
@@ -44,12 +45,41 @@ npm run start   # Start production server
 ## Project Structure
 ```
 src/
-├── app/                 # Next.js app directory
+├── app/                # Next.js app directory
 ├── components/         # Reusable UI components
+│   ├── features/      # Feature-specific components
+│   │   └── pain-points/ # Pain point cards and related components
+│   ├── layouts/       # Layout components
+│   └── ui/           # Common UI components
 ├── lib/               # Utility functions and helpers
-├── styles/            # Global styles and Tailwind config
-└── types/             # TypeScript type definitions
+├── styles/           # Global styles and Tailwind config
+└── types/            # TypeScript type definitions
 ```
+
+## Component Guidelines
+
+### Pain Points Component
+The pain points feature implements a responsive card system:
+
+#### Mobile View
+- Vertical card layout
+- Swipe up/down for solutions
+- Swipe left/right for navigation
+- Touch-optimized interactions
+
+#### Desktop View (>= 1024px)
+- Side-by-side layout
+- Left panel: Pain point information
+- Right panel: Solutions (Quick Win & Systemic Fix)
+- Enhanced animations and hover states
+
+### Breakpoints
+Current breakpoint system:
+- sm: 640px (Larger phones)
+- md: 768px (Tablets)
+- lg: 1024px (Desktop)
+- xl: 1280px (Large desktop)
+- 2xl: 1536px (Extra large screens)
 
 ## Development Guidelines
 - Follow TypeScript best practices
@@ -61,6 +91,7 @@ src/
 
 ## 2024 Roadmap
 ### Q1 2024
+- [x] Implement pain points card system
 - [ ] Complete main service pages
 - [ ] Implement core PWA features
 - [ ] Set up CI/CD pipeline
