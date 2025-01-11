@@ -1,5 +1,7 @@
 # CorpInsights Design System Guide 2025
 
+> **IMPORTANT**: This document serves as the single source of truth for our design system. The Tailwind configuration and CSS variables should always match this specification. When making updates, ensure all three locations (this doc, tailwind.config.ts, and globals.css) are synchronized.
+
 Our design system embodies the bridge between traditional business wisdom and modern technological innovation. It's crafted to communicate professionalism, growth, and technical capability while maintaining exceptional usability for our B2B audience.
 
 ## I. Color Architecture
@@ -83,10 +85,11 @@ Our typography system creates clear hierarchy while maintaining readability acro
    - Usage: Page titles, hero text, important numbers
    - Properties: Bold weight, tight tracking
 
-2. Open Sans
+2. Roboto
    - Purpose: Body text and general content
-   - Usage: Paragraphs, lists, form labels
+   - Usage: Paragraphs, lists, form labels, headers (h2-h4)
    - Properties: Regular weight, comfortable line height
+   - Note: Primary sans-serif font for all content
 
 3. Montserrat
    - Purpose: Interactive elements and accents
@@ -106,17 +109,17 @@ We implement a sophisticated mobile-first type scale:
 2. Section Headers (H2)
    - Mobile: 36px
    - Desktop: 48px
-   - Properties: Open Sans, Semibold, 1.2 line height
+   - Properties: Roboto, Semibold, 1.2 line height
 
 3. Subsection Headers (H3)
    - Mobile: 24px
    - Desktop: 32px
-   - Properties: Open Sans, Semibold, 1.3 line height
+   - Properties: Roboto, Semibold, 1.3 line height
 
 4. Body Text
    - Mobile: 16px
    - Desktop: 18px
-   - Properties: Open Sans, Regular, 1.6 line height
+   - Properties: Roboto, Regular, 1.6 line height
 
 ## III. Component System
 
@@ -212,3 +215,5 @@ When implementing this system:
 3. Test interactions across different input methods
 4. Verify color contrast meets accessibility standards
 5. Ensure consistent spacing using the defined scale
+6. Reference this document when making changes to tailwind.config.ts or globals.css
+7. Keep typography, colors, and spacing synchronized across all implementation files
