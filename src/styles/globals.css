@@ -225,9 +225,10 @@
   }
 
   .btn-secondary {
-    @apply btn bg-brand-neutral-white/90 text-brand-secondary-500
+    @apply btn text-brand-secondary-500
            hover:bg-brand-neutral-white
            focus:ring-brand-secondary-500;
+    background-color: color-mix(in srgb, var(--brand-neutral-white) 90%, transparent);
   }
 
   /* Enhanced Card System */
