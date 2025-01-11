@@ -54,7 +54,7 @@ const config: Config = {
       },
       fontFamily: {
         playfair: ['var(--font-playfair)'],
-        opensans: ['var(--font-opensans)'],
+        roboto: ['var(--font-roboto)'],
         montserrat: ['var(--font-montserrat)'],
       },
       fontSize: {
