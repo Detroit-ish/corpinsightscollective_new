@@ -1,5 +1,5 @@
 import { Metadata, Viewport } from "next"
-import { Playfair_Display, Open_Sans, Montserrat } from "next/font/google";
+import { Playfair_Display, Roboto, Montserrat } from "next/font/google";
 import "@/styles/globals.css";
 import Header from "@/components/layouts/Header";
 import Footer from "@/components/layouts/Footer";
@@ -10,9 +10,10 @@ const playfair = Playfair_Display({
   variable: '--font-playfair',
 });
 
-const opensans = Open_Sans({
+const roboto = Roboto({
   subsets: ['latin'],
-  variable: '--font-opensans',
+  variable: '--font-roboto',
+  weight: ['400', '500', '700'],
 });
 
 const montserrat = Montserrat({
@@ -65,7 +66,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <body 
-        className={`${playfair.variable} ${opensans.variable} ${montserrat.variable} antialiased min-h-full flex flex-col bg-white text-gray-900`}
+        className={`${playfair.variable} ${roboto.variable} ${montserrat.variable} antialiased min-h-full flex flex-col bg-white text-gray-900`}
       >
         {/* Main content wrapper */}
         <div className="flex min-h-full flex-col">
