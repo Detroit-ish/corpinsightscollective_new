@@ -49,12 +49,21 @@
   --brand-accent2: #F8F8F8;      /* Page backgrounds, cards, containers */
   --brand-accent3: #E0FFFF;      /* Tool backgrounds, active states */
 
+  /* Neutral Colors */
+  --brand-neutral-white: #FFFFFF;
+  --brand-neutral-black: #000000;
+
   /* Strategic Gradient System */
   --gradient-professional: linear-gradient(to right, var(--brand-primary-500), var(--brand-secondary-500));
   --gradient-growth: linear-gradient(to right, var(--brand-primary-500), var(--brand-accent1-500));
   --gradient-action: linear-gradient(135deg, var(--brand-accent1-500), rgba(255, 111, 79, 0.8));
   --gradient-surface: linear-gradient(to bottom right, var(--brand-accent2), rgba(224, 255, 255, 0.3));
   --gradient-tech: linear-gradient(45deg, rgba(43, 58, 66, 0.05) 25%, transparent 25%);
+
+  /* Opacity Variants */
+  --opacity-hover: 0.9;
+  --opacity-active: 0.8;
+  --opacity-disabled: 0.5;
 
   /* System Feedback */
   --color-success: #10B981;
@@ -69,6 +78,7 @@
   /* Core Text Sizes - Mobile First with Desktop Refinements */
   --font-size-body: 1rem;        /* 16px mobile */
   --font-size-body-desktop: 1.125rem;  /* 18px desktop */
+  --font-size-nav: 1.125rem;     /* 18px consistent */
   
   /* Strategic Heading Scale */
   --font-size-h1: 3rem;          /* 48px mobile */
@@ -183,12 +193,16 @@
            leading-normal text-brand-secondary-500;
   }
 
+  .text-nav {
+    @apply font-montserrat text-[length:var(--font-size-nav)] tracking-wide;
+  }
+
   /*=============================================
     Component Classes - Reusable UI Elements
   =============================================*/
 
-  .container-padding {
-    @apply px-4 sm:px-6 lg:px-8;
+  .container-base {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
 
   .section-spacing {
@@ -198,27 +212,27 @@
   /* Strategic Button System */
   .btn {
     @apply inline-flex items-center justify-center rounded-lg font-montserrat
+           text-[length:var(--font-size-nav)]
            transition-all duration-200 ease-in-out
            focus:outline-none focus:ring-2 focus:ring-offset-2;
   }
 
   .btn-primary {
-    @apply btn bg-gradient-to-r from-brand-primary-500 to-brand-primary-600 text-white
-           hover:from-brand-primary-600 hover:to-brand-primary-700
-           active:from-brand-primary-700 active:to-brand-primary-800
-           focus:ring-brand-primary-500;
-  }
-
-  .btn-secondary {
-    @apply btn bg-gradient-to-r from-brand-accent1-500 to-brand-accent1-600 text-white
+    @apply btn bg-gradient-to-r from-brand-accent1-500 to-brand-accent1-600 text-brand-neutral-white
            hover:from-brand-accent1-600 hover:to-brand-accent1-700
            active:from-brand-accent1-700 active:to-brand-accent1-800
            focus:ring-brand-accent1-500;
   }
 
+  .btn-secondary {
+    @apply btn bg-brand-neutral-white/90 text-brand-secondary-500
+           hover:bg-brand-neutral-white
+           focus:ring-brand-secondary-500;
+  }
+
   /* Enhanced Card System */
   .card {
-    @apply bg-white rounded-lg shadow-sm transition-all duration-200
+    @apply bg-brand-neutral-white rounded-lg shadow-sm transition-all duration-200
            hover:shadow-md hover:translate-y-[-2px];
   }
 
@@ -227,7 +241,7 @@
   }
 
   .metric-card {
-    @apply card p-6 bg-gradient-professional text-white;
+    @apply card p-6 bg-gradient-professional text-brand-neutral-white;
   }
 
   /* Interactive Elements */
@@ -255,18 +269,5 @@
 
   .text-gradient {
     @apply bg-clip-text text-transparent;
-  }
-
-  /* Strategic Gradient Utilities */
-  .gradient-professional {
-    @apply bg-gradient-to-r from-brand-primary-500 to-brand-secondary-500;
-  }
-
-  .gradient-growth {
-    @apply bg-gradient-to-r from-brand-primary-500 to-brand-accent1-500;
-  }
-
-  .gradient-action {
-    @apply bg-gradient-135 from-brand-accent1-500 to-brand-accent1-400;
   }
 }

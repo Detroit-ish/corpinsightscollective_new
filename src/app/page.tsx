@@ -20,10 +20,10 @@ export default function Home() {
       <section className="py-24 px-4 sm:px-6 lg:px-8 bg-brand-accent2">
         <div className="max-w-7xl mx-auto">
           <div className="text-center">
-            <h2 className="text-[36px] md:text-[48px] font-playfair font-bold text-brand-secondary">
+            <h2 className="text-[36px] md:text-[48px] font-playfair font-bold text-brand-secondary-500">
               Why Choose CorpInsights Collective?
             </h2>
-            <p className="mt-6 text-[18px] md:text-[20px] text-brand-secondary/80 max-w-2xl mx-auto font-opensans">
+            <p className="mt-6 text-[18px] md:text-[20px] text-brand-secondary-500/80 max-w-2xl mx-auto font-opensans">
               We deliver scalable, human-centric solutions that drive genuine growth while maintaining ethical considerations.
             </p>
           </div>
@@ -31,17 +31,17 @@ export default function Home() {
           <div className="mt-16 grid gap-8 md:grid-cols-3">
             {[
               {
-                icon: <BarChart2 className="w-8 h-8 text-brand-primary" />,
+                icon: <BarChart2 className="w-8 h-8 text-brand-primary-500" />,
                 title: "Data-Driven Growth",
                 description: "Transform complex data into actionable insights that drive business growth."
               },
               {
-                icon: <Shield className="w-8 h-8 text-brand-primary" />,
+                icon: <Shield className="w-8 h-8 text-brand-primary-500" />,
                 title: "Ethical Integration",
                 description: "Implement technology solutions with a strong focus on ethics and security."
               },
               {
-                icon: <Users className="w-8 h-8 text-brand-primary" />,
+                icon: <Users className="w-8 h-8 text-brand-primary-500" />,
                 title: "Human-Centric",
                 description: "Keep the human element at the forefront of technological advancement."
               }
@@ -57,10 +57,10 @@ export default function Home() {
                 <div className="p-2 inline-block bg-brand-accent3 rounded-lg shadow-sm">
                   {feature.icon}
                 </div>
-                <h3 className="mt-4 text-[24px] font-playfair font-semibold text-brand-secondary">
+                <h3 className="mt-4 text-[24px] font-playfair font-semibold text-brand-secondary-500">
                   {feature.title}
                 </h3>
-                <p className="mt-2 text-[16px] text-brand-secondary/80 font-opensans">
+                <p className="mt-2 text-[16px] text-brand-secondary-500/80 font-opensans">
                   {feature.description}
                 </p>
               </motion.div>
@@ -72,10 +72,10 @@ export default function Home() {
       {/* CTA Section */}
       <section className="bg-gradient-to-r from-brand-primary-500 to-brand-secondary-500 py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-[36px] md:text-[48px] font-playfair font-bold text-white">
+          <h2 className="text-[36px] md:text-[48px] font-playfair font-bold text-brand-neutral-white">
             Ready to Transform Your Business?
           </h2>
-          <p className="mt-6 text-[18px] md:text-[20px] text-white/90 max-w-2xl mx-auto font-opensans">
+          <p className="mt-6 text-[18px] md:text-[20px] text-brand-neutral-white/90 max-w-2xl mx-auto font-opensans">
             Let&apos;s explore how we can help you achieve sustainable growth with ethical tech solutions.
           </p>
           <div className="mt-10">
