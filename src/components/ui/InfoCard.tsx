@@ -9,7 +9,7 @@
  * 
  * 2. Typography:
  *    - Follows type scale for headings and body
- *    - Uses system fonts: Playfair, Montserrat, OpenSans
+ *    - Uses system fonts: Playfair Display, Montserrat, Roboto
  * 
  * 3. Animation:
  *    - Matches system animation timings
