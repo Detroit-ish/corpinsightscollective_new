@@ -4,18 +4,27 @@ import JourneyCircle from './JourneyCircle';
 import { stages } from './stages';
 import Button from '@/components/ui/Button';
 
+/**
+ * Hero Component - Main landing section
+ * 
+ * Design System Implementation:
+ * - Typography uses text-h1/body classes for consistent scaling
+ * - Uses professional gradient for background
+ * - Implements system-defined opacity values
+ * - Maintains responsive text sizing via design tokens
+ */
 export default function Hero() {
   const [activeStage, setActiveStage] = useState(1);
 
   return (
     <section className="relative min-h-screen flex items-center">
-      {/* Background with gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-brand-primary-500 via-brand-secondary-500 to-brand-primary-700">
-        <div className="absolute inset-0 opacity-10" />
+      {/* Background using design system gradient */}
+      <div className="absolute inset-0 bg-gradient-professional">
+        <div className="absolute inset-0 bg-brand-secondary-500/10" />
       </div>
 
       {/* Main Content Container */}
-      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container-base">
         <div className="grid lg:grid-cols-12 gap-8 items-center">
           {/* Journey Circle - Main focal point */}
           <div className="lg:col-span-7 order-2 lg:order-1">
@@ -42,28 +51,28 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-playfair font-bold text-white">
+              <h1 className="text-h1 md:text-h1-lg lg:text-h1-hero font-playfair font-bold text-brand-neutral-white">
                 Your Business Journey
-                <span className="block mt-2 bg-clip-text text-transparent bg-gradient-to-r from-brand-accent1 to-brand-accent2">
+                <span className="block mt-2 bg-clip-text text-transparent bg-gradient-growth">
                   Starts Here
                 </span>
               </h1>
               
-              <p className="mt-6 text-lg md:text-xl text-white/90 font-opensans">
+              <p className="mt-6 text-body md:text-body-lg text-brand-neutral-white/90 font-roboto">
                 Navigate through our interactive growth pathway designed to transform your B2B success with ethical tech solutions.
               </p>
 
               <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <Button 
                   variant="primary"
-                  className="bg-white text-brand-primary-500 hover:bg-brand-accent1 hover:text-white"
+                  className="bg-brand-neutral-white text-brand-primary-500 hover:bg-brand-accent1-500 hover:text-brand-neutral-white"
                   showArrow
                 >
                   Start Your Journey
                 </Button>
                 <Button 
                   variant="secondary"
-                  className="border-2 border-white/20 text-white hover:bg-white/10"
+                  className="border-2 border-brand-neutral-white/20 text-brand-neutral-white hover:bg-brand-neutral-white/10"
                 >
                   Learn More
                 </Button>
