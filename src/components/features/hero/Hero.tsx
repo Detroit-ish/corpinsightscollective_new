@@ -1,17 +1,10 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
 import JourneyCircle from './JourneyCircle';
 import { stages } from './stages';
 import Button from '@/components/ui/Button';
 
 /**
  * Hero Component - Main landing section
- * 
- * Design System Implementation:
- * - Typography uses text-h1/body classes for consistent scaling
- * - Uses professional gradient for background
- * - Implements system-defined opacity values
- * - Maintains responsive text sizing via design tokens
  */
 export default function Hero() {
   const [activeStage, setActiveStage] = useState(1);
@@ -28,12 +21,7 @@ export default function Hero() {
         <div className="grid lg:grid-cols-12 gap-8 items-center">
           {/* Journey Circle - Main focal point */}
           <div className="lg:col-span-7 order-2 lg:order-1">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6 }}
-              className="relative"
-            >
+            <div className="relative">
               <div className="aspect-square">
                 <JourneyCircle 
                   stages={stages}
@@ -41,31 +29,20 @@ export default function Hero() {
                   onStageClick={setActiveStage}
                 />
               </div>
-            </motion.div>
+            </div>
           </div>
 
           {/* Text Content */}
           <div className="lg:col-span-5 order-1 lg:order-2 text-center lg:text-left">
-            <motion.div
-              initial={{ opacity: 0, y: 20, display: "block" }}
-              whileInView={{ opacity: 1, y: 0, display: "block" }}
-              viewport={{ once: true }}
-              transition={{ 
-                duration: 0.5, 
-                delay: 0.3,
-                ease: "easeOut"
-              }}
-              style={{ display: "block" }} // Ensure consistent display
-              className="block" // Additional safeguard
-            >
+            <div className="relative">
               <h1 className="text-h1 md:text-h1-lg lg:text-h1-hero font-playfair font-bold text-brand-neutral-white">
                 Your Business Journey
-                <span className="block mt-2 bg-clip-text text-transparent bg-gradient-growth">
+                <span className="block mt-2 text-brand-neutral-white">
                   Starts Here
                 </span>
               </h1>
               
-              <p className="mt-6 text-body md:text-body-lg text-brand-neutral-white/90 font-roboto">
+              <p className="mt-6 text-body md:text-body-lg text-brand-neutral-white font-roboto">
                 Navigate through our interactive growth pathway designed to transform your B2B success with ethical tech solutions.
               </p>
 
@@ -84,7 +61,7 @@ export default function Hero() {
                   Learn More
                 </Button>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>
