@@ -47,9 +47,16 @@ export default function Hero() {
           {/* Text Content */}
           <div className="lg:col-span-5 order-1 lg:order-2 text-center lg:text-left">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
+              initial={{ opacity: 0, y: 20, display: "block" }}
+              whileInView={{ opacity: 1, y: 0, display: "block" }}
+              viewport={{ once: true }}
+              transition={{ 
+                duration: 0.5, 
+                delay: 0.3,
+                ease: "easeOut"
+              }}
+              style={{ display: "block" }} // Ensure consistent display
+              className="block" // Additional safeguard
             >
               <h1 className="text-h1 md:text-h1-lg lg:text-h1-hero font-playfair font-bold text-brand-neutral-white">
                 Your Business Journey
