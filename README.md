@@ -1,27 +1,8 @@
-# CorpInsights Website
+# CorpInsights Collective
 
-## Project Overview
-A modern Progressive Web Application built with Next.js 15, showcasing business and technology solutions. Our platform delivers a seamless, responsive experience for sharing professional services and insights.
+Welcome to CorpInsights Collective! We're building a modern Progressive Web Application that helps SMBs and startups grow without the guesswork by creating aligned marketing and sales systems.
 
-## Key Features
-- 📱 Progressive Web App (PWA) capabilities
-- 🎨 Responsive design with Tailwind CSS
-- 🚀 Modern animations powered by Framer Motion
-- 🔍 SEO-optimized structure
-- ♿ Accessibility-first approach
-- 📊 Interactive business journey visualization
-- 🎯 Adaptive pain point cards with mobile-first design
-
-## Tech Stack
-- **Framework**: Next.js 15.0.2
-- **UI Library**: React 18.2.0
-- **Styling**: Tailwind CSS 3.4.1
-- **Language**: TypeScript 5
-- **Animations**: Framer Motion 11
-- **Testing**: Jest + React Testing Library
-- **Code Quality**: ESLint + Prettier
-
-## Getting Started
+## Quick Start
 
 ### Prerequisites
 - Node.js 18+ (LTS recommended)
@@ -34,13 +15,33 @@ cd corpinsightscollective_new
 npm install
 ```
 
-### Development
+### Development Commands
 ```bash
 npm run dev     # Start development server
 npm run test    # Run tests
 npm run build   # Create production build
 npm run start   # Start production server
 ```
+
+## Technology Stack
+
+### Core Technologies
+- **Framework**: Next.js 15.0.2
+- **UI Library**: React 18.2.0
+- **Styling**: Tailwind CSS 3.4.1
+- **Language**: TypeScript 5
+- **Animations**: Framer Motion 11
+- **Testing**: Jest + React Testing Library
+- **Code Quality**: ESLint + Prettier
+
+### Key Features
+- 📱 Progressive Web App (PWA) capabilities
+- 🎨 Responsive design with Tailwind CSS
+- 🚀 Modern animations powered by Framer Motion
+- 🔍 SEO-optimized structure
+- ♿ Accessibility-first approach
+- 📊 Interactive business journey visualization
+- 🎯 Adaptive pain point cards with mobile-first design
 
 ## Project Structure
 ```
@@ -56,40 +57,35 @@ src/
 └── types/            # TypeScript type definitions
 ```
 
-## Component Guidelines
+## Technical Specifications
 
-### Pain Points Component
-The pain points feature implements a responsive card system:
+### Breakpoints
+Mobile-First Development:
+- Base: iPhone 12 Pro (390px)
+- Small: iPhone SE (375px)
+- Large: iPhone 14 Pro Max (428px)
+- Tablet: >= 768px
+- Desktop: >= 1024px
 
-#### Mobile View
+Note: All development follows a strict mobile-first approach, starting with the iPhone 12 Pro (390px) as the primary development target.
+
+### Key Components
+
+#### Pain Points Component
+Mobile View:
 - Vertical card layout
 - Swipe up/down for solutions
 - Swipe left/right for navigation
 - Touch-optimized interactions
 
-#### Desktop View (>= 1024px)
+Desktop View (>= 1024px):
 - Side-by-side layout
 - Left panel: Pain point information
 - Right panel: Solutions (Quick Win & Systemic Fix)
 - Enhanced animations and hover states
 
-### Breakpoints
-Current breakpoint system:
-- sm: 640px (Larger phones)
-- md: 768px (Tablets)
-- lg: 1024px (Desktop)
-- xl: 1280px (Large desktop)
-- 2xl: 1536px (Extra large screens)
-
-## Development Guidelines
-- Follow TypeScript best practices
-- Write tests for new components
-- Maintain accessibility standards
-- Keep components modular and reusable
-- Use Tailwind for styling
-- Document new features
-
 ## 2024 Roadmap
+
 ### Q1 2024
 - [x] Implement pain points card system
 - [ ] Complete main service pages
@@ -101,22 +97,27 @@ Current breakpoint system:
 - [ ] Implement contact form
 - [ ] Add analytics
 
-### Q3 2024
+### Q3 & Q4 2024
 - [ ] Add blog/resources section
-- [ ] Implement user authentication
-- [ ] Add interactive features
-
-### Q4 2024
-- [ ] Performance optimization
 - [ ] Enhanced PWA features
-- [ ] Content management system
+- [ ] Performance optimization
+- [ ] Interactive features
 
-## Contributing
-1. Create a feature branch from develop
-2. Implement changes
-3. Add tests
-4. Submit pull request to develop
+## Documentation
+
+For detailed documentation, please visit:
+- [Development Guide](docs/development/setup.md) - Development setup and implementation guide
+- [Design System](docs/design/design-system.md) - Design system documentation and patterns
+- [Project Overview](docs/README.md) - Project documentation hub
 
 ## Deployment
+
 - Development: Automatic deployment from develop branch
 - Production: Manual deployment after QA
+
+See [Development Guide](docs/development/setup.md) for detailed procedures.
+
+## Need Help?
+
+- **Documentation:** See `/docs` folder for comprehensive guides
+- **Project Updates:** Check the roadmap above
