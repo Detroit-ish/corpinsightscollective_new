@@ -1,487 +1,945 @@
-# CorpInsights Development Guide
+# CorpInsights Design System Guide 2025
 
-- [Project Overview](#project-overview)
-- [Implementation Status](#implementation-status)
-- [Core Patterns & Standards](#core-patterns--standards)
-- [Development Patterns](#development-patterns)
-- [Technical Implementation](#technical-implementation)
-- [Development Workflow](#development-workflow)
-- [Technical Considerations](#technical-considerations)
-- [Current Implementation Focus](#current-implementation-focus)
-- [Feature Roadmap](#feature-roadmap)
-- [Development Guidelines](#development-guidelines)
-- [Technical Evolution](#technical-evolution)
+## IMPORTANT NOTICE
+This document serves as the single source of truth for our design system. The Tailwind configuration and CSS variables should always match this specification. When making updates, ensure all three locations (this doc, tailwind.config.ts, and globals.css) are synchronized.
 
-## Project Overview
+## Table of Contents
+1. Introduction
+2. Design Foundations
+   - Color Architecture
+   - Typography System
+   - Spacing & Layout
+   - Animation & Interaction
+3. Component System
+   - Base Components
+   - Composite Components
+   - Pattern Library
+4. Development Guidelines
+   - Mobile-First Approach
+   - Implementation Standards
+   - Testing Requirements
+5. Maintenance & Documentation
+   - Update Procedures
+   - Documentation Standards
+   - Quality Assurance
 
-Progressive Web App built with Next.js 15, focusing on interactive education and seamless UX. The project follows a strict mobile-first approach with advanced desktop transformations.
+## 1. Introduction
 
-### Core Technical Stack
-- **Framework**: Next.js 15
-- **UI**: React 18.2.0
-- **Styling**: Tailwind CSS 3.4.1
-- **Language**: TypeScript 5
-- **Animations**: Framer Motion 11
+Our design system embodies the bridge between traditional business wisdom and modern technological innovation. It's crafted to communicate professionalism, growth, and technical capability while maintaining exceptional usability for our B2B audience.
 
-### Project Structure
+### Core Principles
+- Consistency in implementation
+- Accessibility by default
+- Performance-oriented
+- Developer-friendly
+- Maintainable structure
+
+## 2. Design Foundations
+
+### Color Architecture
+
+#### Primary Brand Teal
+Implementation:
+```css
+/* CSS Variable */
+var(--brand-primary-500)
+
+/* Tailwind Classes */
+text-brand-primary-500
+bg-brand-primary-500
+border-brand-primary-500
 ```
-src/
-├── app/                # Next.js app directory
-├── components/
-│   ├── features/      # Feature-specific components
-│   │   ├── hero/      # Interactive journey system
-│   │   └── pain-points/ # Solution cards system
-│   ├── layouts/      # Layout components
-│   └── ui/           # Shared UI components
-├── lib/              # Utility functions
-├── styles/          # Global styles & design system
-└── types/           # TypeScript definitions
+
+Scale Usage:
+- 50: bg-brand-primary-50 – Subtle backgrounds, disabled states
+- 100: bg-brand-primary-100 – Hover backgrounds, secondary elements
+- 200: bg-brand-primary-200 – Secondary indicators, progress states
+- 300: bg-brand-primary-300 – Active states, tertiary elements
+- 400: bg-brand-primary-400 – Supporting elements, hover states
+- 500: bg-brand-primary-500 – Primary actions, key metrics, core elements
+- 600: bg-brand-primary-600 – Hover states for primary elements
+- 700: bg-brand-primary-700 – Active/pressed states
+- 800: bg-brand-primary-800 – Deep accents, focused states
+- 900: bg-brand-primary-900 – Text on light backgrounds
+
+Common Patterns:
+```tsx
+// Primary Button
+<button className="bg-brand-primary-500 hover:bg-brand-primary-600 active:bg-brand-primary-700">
+
+// Status Indicator
+<div className="bg-brand-primary-100 text-brand-primary-900">
+
+// Interactive Link
+<a className="text-brand-primary-500 hover:text-brand-primary-600">
 ```
 
-## Implementation Status
+#### Secondary Dark Blue-Grey
+Implementation:
+```css
+/* CSS Variable */
+var(--brand-secondary-500)
 
-### 1. Hero Section (98% Complete)
+/* Tailwind Classes */
+text-brand-secondary-500
+bg-brand-secondary-500
+border-brand-secondary-500
+```
 
-#### Core Features
-- Interactive journey visualization with stage management
-- InfoCard system:
-  - Mobile bottom sheet with spring animations
-  - Desktop modal with backdrop blur
-  - Content management system
-  - Touch & mouse interactions
-- Responsive transformations:
-  - Vertical stack on mobile
-  - Side-by-side on desktop
-  - Adaptive content layout
+Scale Usage:
+- 50: bg-brand-secondary-50 – Light mode backgrounds, subtle elements
+- 100: bg-brand-secondary-100 – Subtle borders, dividers
+- 200: bg-brand-secondary-200 – Disabled text, inactive states
+- 300: bg-brand-secondary-300 – Secondary text, supporting content
+- 400: bg-brand-secondary-400 – Primary text, body content
+- 500: bg-brand-secondary-500 – Headlines, key content, navigation
+- 600: bg-brand-secondary-600 – Dense content areas, footer elements
+- 700: bg-brand-secondary-700 – Hover states for secondary elements
+- 800: bg-brand-secondary-800 – Active states, deep backgrounds
+- 900: bg-brand-secondary-900 – Highest contrast text, deep accents
 
-#### Technical Patterns
-- Stage-based interaction system
-- Gradient background implementation
-- Animation system with Framer Motion
-- Mobile-first responsive layouts
+Common Patterns:
+```tsx
+// Content Section
+<section className="bg-brand-secondary-50">
+  <h2 className="text-brand-secondary-500">
+  <p className="text-brand-secondary-400">
+</section>
 
-### 2. Pain Points Section (75% Complete)
+// Divider
+<hr className="border-brand-secondary-100" />
 
-#### Implemented Features
-- Card component architecture
-- Swipe navigation system:
-  - Touch gestures on mobile
-  - Arrow navigation on desktop
-  - Keyboard accessibility
-- Content management system
-- Basic animation patterns
+// Navigation Item
+<nav className="text-brand-secondary-300 hover:text-brand-secondary-500">
+```
 
-#### In Development
-- Desktop layout transformation
-- Advanced gesture refinements
-- Animation system enhancement
-- Performance optimization
+#### Accent Coral (Growth & Achievement)
+Implementation:
+```css
+/* CSS Variable */
+var(--brand-accent1-500)
 
-### 3. Technical Infrastructure
+/* Tailwind Classes */
+text-brand-accent1-500
+bg-brand-accent1-500
+border-brand-accent1-500
+```
 
-#### Complete
-- Project configuration
-- Design system integration
-- Component architecture
-- Animation foundation
-- Responsive system
+Scale Usage:
+- 50: bg-brand-accent1-50 – Success backgrounds, subtle indicators
+- 100: bg-brand-accent1-100 – Highlight areas, secondary success states
+- 200: bg-brand-accent1-200 – Progress indicators, achievement markers
+- 300: bg-brand-accent1-300 – Supporting elements, tertiary actions
+- 400: bg-brand-accent1-400 – Hover states for accent elements
+- 500: bg-brand-accent1-500 – Primary accent, growth metrics, CTAs
+- 600: bg-brand-accent1-600 – Hover states for accent actions
+- 700: bg-brand-accent1-700 – Active/pressed states for accents
+- 800: bg-brand-accent1-800 – Deep accents, focused states
+- 900: bg-brand-accent1-900 – High contrast accent text
 
-#### In Progress
-- Testing framework
-- Performance monitoring
-- Error boundaries
-- Analytics integration
+Common Patterns:
+```tsx
+// CTA Button
+<button className="bg-brand-accent1-500 hover:bg-brand-accent1-600 active:bg-brand-accent1-700">
 
-## Core Patterns & Standards
+// Success State
+<div className="bg-brand-accent1-50 text-brand-accent1-700">
 
-### 1. Design System Integration
-- Token-based color system
-- Typography scale
-- Spacing system
-- Animation patterns
-- Gradient system
+// Growth Metric
+<span className="text-brand-accent1-500 font-bold">
+```
 
-### 2. Development Approach
+#### Surface Colors
+Implementation:
+```css
+/* CSS Variables */
+var(--brand-accent2)  /* Light Grey Background */
+var(--brand-accent3)  /* Light Cyan Active */
 
-#### Viewport Strategy
-- Base: iPhone 12 Pro (390px)
-- Small: iPhone SE (375px)
-- Large: iPhone 14 Pro Max (428px)
-- Tablet: ≥768px
-- Desktop: ≥1024px
+/* Tailwind Classes */
+bg-brand-accent2
+bg-brand-accent3
+```
 
-#### Component Development Pattern
-1. Mobile implementation
-2. Small screen adaptation
-3. Large screen optimization
-4. Tablet enhancement
-5. Desktop transformation
+Usage Patterns:
+```tsx
+// Page Background
+<div className="bg-brand-accent2 min-h-screen">
 
-### 3. Technical Standards
+// Card Component
+<div className="bg-brand-neutral-white shadow-sm">
 
-#### Code Quality
-- TypeScript strict mode
-- ESLint configuration
-- Prettier formatting
-- Component documentation
+// Active State Container
+<div className="bg-brand-accent3 rounded-lg">
+```
 
-#### Performance Standards
-- Bundle optimization
-- Animation performance
-- Image optimization
-- Loading strategies
+#### Neutral Colors
+Implementation:
+```css
+/* CSS Variables */
+var(--brand-neutral-white)
+var(--brand-neutral-black)
 
-#### Accessibility Requirements
-- ARIA implementation
-- Keyboard navigation
-- Screen reader support
-- Color contrast compliance
+/* Tailwind Classes */
+text-brand-neutral-white
+bg-brand-neutral-white
+text-brand-neutral-black
+bg-brand-neutral-black
+```
 
-## Development Patterns
+Usage Patterns:
+```tsx
+// Light Text on Dark Background
+<div className="bg-brand-secondary-800 text-brand-neutral-white">
 
-### 1. Component Architecture
+// Dark Text on Light Background
+<div className="bg-brand-neutral-white text-brand-neutral-black">
+```
 
-#### Feature Component Pattern
-- Separate business logic from presentation
-- Implement responsive transformations
-- Handle state management
-- Define clear prop interfaces
+#### Strategic Gradient System
+Implementation:
+```css
+/* CSS Variables */
+var(--gradient-professional)
+var(--gradient-growth)
+var(--gradient-action)
+var(--gradient-surface)
+var(--gradient-tech)
 
-#### UI Component Pattern
-- Design system compliance
-- Responsive by default
-- Accessible implementation
-- Performance optimization
+/* Tailwind Classes */
+bg-gradient-professional
+bg-gradient-growth
+bg-gradient-action
+bg-gradient-surface
+bg-gradient-tech
+```
 
-### 2. Animation System
+Usage Patterns:
+```tsx
+// Professional Header
+<header className="bg-gradient-professional text-brand-neutral-white">
 
-#### Mobile Animations
-- Touch feedback
-- Swipe transitions
-- Sheet animations
-- Loading states
+// Growth Section
+<section className="bg-gradient-growth">
 
-#### Desktop Enhancements
-- Hover effects
-- Smooth transitions
-- Parallel animations
-- Interactive feedback
+// Action Button
+<button className="bg-gradient-action hover:opacity-90">
 
-### 3. State Management
+// Surface Card
+<div className="bg-gradient-surface p-6 rounded-lg">
 
-#### Local State
-- UI interactions
-- Component state
-- Animation state
-- Form handling
+// Tech Background
+<div className="bg-gradient-tech opacity-10">
+```
 
-#### Shared State
-- User journey
-- Global settings
-- Theme management
-- Feature flags
+### Typography System
 
-## Technical Implementation
+### Typography System
 
-### 1. Performance Optimization
+#### Font Families
+Implementation:
+```css
+/* CSS Variables */
+var(--font-playfair)
+var(--font-roboto)
+var(--font-montserrat)
 
-#### Animation Performance
-- Use transforms over positions
-- Implement will-change strategically
-- Throttle intensive operations
-- Monitor frame rates
+/* Tailwind Classes */
+font-playfair
+font-roboto
+font-montserrat
+```
 
-#### Bundle Optimization
-- Code splitting
-- Tree shaking
-- Asset optimization
-- Lazy loading
+#### Strategic Usage
 
-### 2. Mobile Optimization
+##### Playfair Display (font-playfair)
+```tsx
+// Headlines and Key Metrics
+<h1 className="font-playfair font-bold text-h1 md:text-h1-lg">
+<div className="font-playfair text-metric">
+```
 
-#### Touch Optimization
-- Touch target sizes
-- Gesture handling
-- Feedback timing
-- Interaction zones
+Primary uses:
+- Headlines
+- Hero text
+- Key metrics
+- Brand statements
 
-#### Performance Considerations
-- Memory management
-- Animation throttling
-- Asset loading
-- State updates
+##### Roboto (font-roboto)
+```tsx
+// Body Text and General Content
+<p className="font-roboto text-body md:text-body-lg">
+<div className="font-roboto text-brand-secondary-400">
+```
 
-### 3. Desktop Enhancement
+Primary uses:
+- Body text
+- General content
+- Paragraphs
+- Lists
+- Tables
 
-#### Interaction Patterns
-- Hover states
-- Click handling
-- Keyboard navigation
-- Focus management
+##### Montserrat (font-montserrat)
+```tsx
+// Interactive Elements
+<button className="font-montserrat text-nav">
+<nav className="font-montserrat tracking-wide">
+```
 
-#### Layout Transformation
-- Responsive grid
-- Content reflow
-- Feature enhancement
-- Animation scaling
+Primary uses:
+- Navigation
+- Buttons
+- Interactive elements
+- Labels
+- Form elements
+
+#### Type Scale
+Implementation:
+```css
+/* Base Sizes - Mobile First */
+--font-size-body: 1rem;              /* 16px mobile */
+--font-size-body-desktop: 1.125rem;  /* 18px desktop */
+--font-size-nav: 1.125rem;           /* 18px consistent */
+
+/* Heading Scale */
+--font-size-h1: 3rem;                /* 48px mobile */
+--font-size-h1-desktop: 4rem;        /* 64px desktop */
+--font-size-h1-hero: 4.5rem;         /* 72px hero */
+
+--font-size-h2: 2.25rem;             /* 36px mobile */
+--font-size-h2-desktop: 3rem;        /* 48px desktop */
+
+--font-size-h3: 1.5rem;              /* 24px mobile */
+--font-size-h3-desktop: 2rem;        /* 32px desktop */
+
+--font-size-h4: 1.125rem;            /* 18px mobile */
+--font-size-h4-desktop: 1.25rem;     /* 20px desktop */
+
+/* Special Purpose */
+--font-size-metric: 2rem;            /* 32px mobile */
+--font-size-metric-desktop: 3rem;    /* 48px desktop */
+--font-size-technical: 0.875rem;     /* 14px consistent */
+```
+
+#### Tailwind Classes
+```tsx
+// Headlines
+<h1 className="text-h1 md:text-h1-lg lg:text-h1-hero">
+<h2 className="text-h2 md:text-h2-lg">
+<h3 className="text-h3 md:text-h3-lg">
+<h4 className="text-h4 md:text-h4-lg">
+
+// Body Text
+<p className="text-body md:text-body-lg">
+
+// Technical/Small Text
+<span className="text-technical">
+
+// Metrics/Numbers
+<div className="text-metric md:text-metric-lg">
+```
+
+#### Line Heights
+Implementation:
+```css
+/* CSS Variables */
+--line-height-tight: 1.25;    /* Headings */
+--line-height-normal: 1.5;    /* Body text */
+--line-height-relaxed: 1.75;  /* Long-form reading */
+
+/* Tailwind Classes */
+leading-tight
+leading-normal
+leading-relaxed
+```
+
+#### Typography Best Practices
+
+##### Heading Hierarchy
+- Use appropriate heading levels (h1-h6) for document structure
+- Maintain consistent spacing between headings and content
+- Apply proper font weights for visual hierarchy
+
+##### Body Text
+- Use appropriate line length (65-75 characters per line)
+- Maintain consistent paragraph spacing
+- Ensure sufficient contrast for readability
+
+##### Responsive Typography
+- Test font sizes across all breakpoints
+- Ensure readability on mobile devices
+- Maintain proper hierarchy at all screen sizes
+
+##### Accessibility Considerations
+- Maintain minimum font sizes for readability (14px)
+- Use sufficient color contrast (WCAG 2.1 AA standard)
+- Ensure proper heading structure for screen readers
+
+#### Implementation Examples
+
+##### Article Layout
+```tsx
+<article className="space-y-6">
+  <h1 className="font-playfair text-h1 md:text-h1-lg text-brand-secondary-900 leading-tight">
+    Article Title
+  </h1>
+  
+  <h2 className="font-playfair text-h2 md:text-h2-lg text-brand-secondary-700 leading-tight mt-8">
+    Section Heading
+  </h2>
+  
+  <p className="font-roboto text-body md:text-body-lg text-brand-secondary-400 leading-normal">
+    Body text content with proper line height and color.
+  </p>
+</article>
+```
+
+##### Interactive Elements
+```tsx
+<nav className="font-montserrat text-nav tracking-wide">
+  <a className="text-brand-secondary-500 hover:text-brand-secondary-700">
+    Navigation Item
+  </a>
+</nav>
+
+<button className="font-montserrat text-nav font-medium">
+  Button Text
+</button>
+```
+
+##### Metrics Display
+```tsx
+<div className="font-playfair text-metric md:text-metric-lg text-brand-primary-500">
+  Key Metric
+  <span className="text-h4 text-brand-secondary-400">
+    Label
+  </span>
+</div>
+```
+
+### Spacing & Layout
+
+#### Container System
+```tsx
+/* Base Container */
+.container-base {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Section Spacing */
+.section-spacing {
+  @apply py-12 sm:py-16 lg:py-24;
+}
+```
+
+#### Grid System
+- Flexible grid implementation
+- Responsive breakpoints
+- Nested grid support
+
+### Component System
+
+#### Button System
+Implementation base styles:
+```css
+/* Base Button Classes */
+.btn {
+  @apply inline-flex items-center justify-center rounded-lg font-montserrat
+         text-[length:var(--font-size-nav)]
+         transition-all duration-200 ease-in-out
+         focus:outline-none focus:ring-2 focus:ring-offset-2;
+}
+```
+
+Variants:
+```tsx
+// Primary Button
+<button className="btn-primary">
+  {/* Applies:
+    bg-gradient-to-r from-brand-accent1-500 to-brand-accent1-600 
+    text-brand-neutral-white
+    hover:from-brand-accent1-600 hover:to-brand-accent1-700
+    active:from-brand-accent1-700 active:to-brand-accent1-800
+    focus:ring-brand-accent1-500
+  */}
+</button>
+
+// Secondary Button
+<button className="btn-secondary">
+  {/* Applies:
+    text-brand-secondary-500
+    hover:bg-brand-neutral-white
+    focus:ring-brand-secondary-500
+    border-2 border-current
+  */}
+</button>
+
+// With Icon
+<button className="btn-primary">
+  <span>Button Text</span>
+  <IconComponent className="ml-2 w-5 h-5" />
+</button>
+```
+
+#### Card System
+Base Implementation:
+```css
+/* Base Card */
+.card {
+  @apply bg-brand-neutral-white rounded-lg shadow-sm transition-all duration-200
+         hover:shadow-md hover:translate-y-[-2px];
+}
+```
+
+Variants:
+```tsx
+// Feature Card
+<div className="feature-card">
+  {/* Applies:
+    card p-6 bg-gradient-surface
+  */}
+</div>
+
+// Metric Card
+<div className="metric-card">
+  {/* Applies:
+    card p-6 bg-gradient-professional text-brand-neutral-white
+  */}
+</div>
+
+// Content Card
+<article className="card p-6">
+  <h3 className="text-h3 text-brand-secondary-500">
+  <p className="text-body text-brand-secondary-400">
+</article>
+```
+
+#### Form Elements
+Implementation:
+```css
+/* Input Base */
+.form-input {
+  @apply w-full rounded-lg border-brand-secondary-200 shadow-sm
+         focus:border-brand-primary-500 focus:ring-brand-primary-500
+         transition-colors duration-200;
+}
+```
+
+Common Patterns:
+```tsx
+// Text Input
+<div className="space-y-2">
+  <label className="text-brand-secondary-500 font-medium">
+    Label Text
+  </label>
+  <input 
+    type="text"
+    className="form-input"
+    placeholder="Enter text..."
+  />
+  <p className="text-technical text-brand-secondary-400">
+    Helper text
+  </p>
+</div>
+
+// Select Input
+<select className="form-input">
+  <option>Select option</option>
+</select>
+
+// Error State
+<input 
+  className="form-input border-color-error focus:border-color-error 
+             focus:ring-color-error/30"
+  aria-invalid="true"
+/>
+```
+
+#### Interactive Elements
+Implementation:
+```css
+/* Journey Node (Interactive Points) */
+.journey-node {
+  @apply absolute rounded-full flex items-center justify-center 
+         transition-all duration-300 shadow-md hover:shadow-lg
+         bg-gradient-to-r from-brand-primary-500 to-brand-accent1-500;
+}
+
+/* Link Styles */
+.link-primary {
+  @apply text-brand-primary-500 hover:text-brand-primary-600
+         underline-offset-4 hover:underline;
+}
+```
+
+Usage:
+```tsx
+// Interactive Node
+<div className="journey-node w-12 h-12">
+  <Icon className="w-6 h-6 text-brand-neutral-white" />
+</div>
+
+// Text Link
+<a href="#" className="link-primary">
+  Learn More
+</a>
+
+// Navigation Link
+<a className="text-brand-secondary-400 hover:text-brand-secondary-600 
+              transition-colors duration-200">
+  Nav Item
+</a>
+```
+
+### Layout & Spacing
+
+#### Container System
+```css
+/* Base Container */
+.container-base {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Section Spacing */
+.section-spacing {
+  @apply py-12 sm:py-16 lg:py-24;
+}
+```
+
+Usage Patterns:
+```tsx
+// Page Layout
+<main className="min-h-screen bg-brand-accent2">
+  <div className="container-base">
+    <section className="section-spacing">
+      {/* Content */}
+    </section>
+  </div>
+</main>
+
+// Content Section
+<section className="container-base py-12 sm:py-16 lg:py-24">
+  <div className="space-y-8">
+    {/* Stacked content with consistent spacing */}
+  </div>
+</section>
+```
+
+#### Spacing Scale
+```css
+/* CSS Variables */
+--spacing-px: 1px;
+--spacing-0: 0;
+--spacing-1: 0.25rem;  /* 4px */
+--spacing-2: 0.5rem;   /* 8px */
+--spacing-3: 0.75rem;  /* 12px */
+--spacing-4: 1rem;     /* 16px */
+--spacing-6: 1.5rem;   /* 24px */
+--spacing-8: 2rem;     /* 32px */
+--spacing-12: 3rem;    /* 48px */
+--spacing-16: 4rem;    /* 64px */
+```
+
+Usage Through Tailwind:
+```tsx
+// Padding
+<div className="p-4 sm:p-6 lg:p-8">
+<div className="px-4 py-6">
+<div className="pt-12 pb-6">
+
+// Margin
+<div className="mt-4 mb-8">
+<div className="mx-auto">
+<div className="-mt-2">
+
+// Gap
+<div className="space-y-4">
+<div className="gap-x-6">
+<div className="gap-4">
+```
+
+#### Grid System
+```tsx
+// Basic Grid
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+// Complex Grid
+<div className="grid lg:grid-cols-12 gap-8">
+  <div className="lg:col-span-8">
+  <div className="lg:col-span-4">
+</div>
+
+// Auto Grid
+<div className="grid grid-cols-auto-fit gap-4">
+  {/* Items will fit based on min/max content */}
+</div>
+```
+
+### Animation & Interaction
+
+#### Transition System
+```css
+/* Default Transition */
+.transition-default {
+  @apply transition-all duration-200 ease-in-out;
+}
+
+/* Animation Keyframes */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+```
+
+Common Patterns:
+```tsx
+// Hover Effects
+<button className="transition-all duration-200 hover:scale-102">
+
+// Page Transitions
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.5 }}
+>
+
+// Interactive States
+<div className="transform transition-transform hover:-translate-y-1">
+```
+
+#### Loading States
+```tsx
+// Skeleton Loading
+<div className="animate-pulse bg-brand-secondary-100 rounded-lg h-32">
+
+// Spinner
+<div className="animate-spin text-brand-primary-500">
+  <SpinnerIcon className="w-6 h-6" />
+</div>
+
+// Progressive Loading
+<div className="animate-fade-in">
+  {/* Content */}
+</div>
+```
+
+### Implementation Guidelines
+
+#### Component Architecture
+Best Practices:
+```tsx
+// 1. Clear Component Structure
+const FeatureCard: React.FC<FeatureCardProps> = ({
+  title,
+  description,
+  icon: Icon,
+  className
+}) => {
+  return (
+    <div className={cn(
+      "feature-card", // Base styles
+      "p-6 space-y-4", // Spacing
+      className // Custom styles
+    )}>
+      {/* Icon Container */}
+      <div className="bg-brand-primary-50 p-3 rounded-lg w-fit">
+        <Icon className="w-6 h-6 text-brand-primary-500" />
+      </div>
+
+      {/* Content */}
+      <h3 className="text-h3 text-brand-secondary-500">
+        {title}
+      </h3>
+      <p className="text-body text-brand-secondary-400">
+        {description}
+      </p>
+    </div>
+  );
+};
+
+// 2. Composable Pattern
+const Card = {
+  Root: ({ children, className }) => (
+    <div className={cn("card", className)}>
+      {children}
+    </div>
+  ),
+  Header: ({ children }) => (
+    <div className="p-6 border-b border-brand-secondary-100">
+      {children}
+    </div>
+  ),
+  Content: ({ children }) => (
+    <div className="p-6">
+      {children}
+    </div>
+  )
+};
+```
+
+#### CSS Organization
+```css
+/* 1. Layer Structure */
+@layer base {
+  /* Base HTML elements */
+  html, body {
+    @apply text-brand-secondary-500 bg-brand-accent2;
+  }
+}
+
+@layer components {
+  /* Reusable component classes */
+  .btn { /* ... */ }
+  .card { /* ... */ }
+}
+
+@layer utilities {
+  /* Custom utilities */
+  .text-balance { /* ... */ }
+}
+
+/* 2. Custom Properties Pattern */
+:root {
+  /* Use semantic naming */
+  --color-text-primary: var(--brand-secondary-500);
+  --color-text-secondary: var(--brand-secondary-400);
+}
+```
+
+### Development Workflow
+
+#### Documentation Standards
+Component Documentation Template:
+```tsx
+/**
+ * ComponentName
+ *
+ * @device Initially developed for iPhone 12 Pro (390px)
+ * @viewport Default mobile viewport
+ * @breakpoints
+ * - Base: iPhone 12 Pro (390px)
+ * - Small: iPhone SE (375px)
+ * - Large: iPhone 14 Pro Max (428px)
+ * - Tablet: >= 768px
+ * - Desktop: >= 1024px
+ *
+ * @implementation
+ * <ComponentName
+ *   prop1="value"
+ *   prop2={value}
+ * />
+ *
+ * @designTokens
+ * - Colors: brand-primary-500, brand-secondary-400
+ * - Typography: text-h3, text-body
+ * - Spacing: space-y-4, p-6
+ */
+```
+
+#### Testing Requirements
+Development Phase:
+1. Initial Build
+   - Test on iPhone 12 Pro preset
+   - Verify core functionality
+   - Check design system compliance
+
+2. Pre-PR Review
+   - Test all breakpoints
+   - Verify responsive behavior
+   - Check accessibility standards
+   - Validate design tokens usage
+
+3. Production Preparation
+   - Full device testing
+   - Performance validation
+   - Accessibility audit
+   - Design system validation
+
+### Maintenance Guidelines
+
+#### Design Token Updates
+```tsx
+// 1. Update CSS variables in globals.css
+// 2. Verify Tailwind config mapping
+// 3. Update design system documentation
+// 4. Run component audit
+```
+
+#### Component Updates
+```tsx
+// 1. Update component code
+// 2. Update documentation
+// 3. Verify design system compliance
+// 4. Test across breakpoints
+```
+
+#### Documentation Updates
+```tsx
+// 1. Keep implementation examples current
+// 2. Update breakpoint information
+// 3. Maintain token references
+// 4. Document breaking changes
+```
 
 ## Development Workflow
 
-### 1. Component Development
+### Mobile-First Development
+Primary Development Target:
+- Device: iPhone 12 Pro (390px width)
+- Chrome DevTools Preset: iPhone 12 Pro
+- Initial Development: Lock viewport to mobile width
 
-#### Implementation Steps
-1. Mobile layout
-2. Core functionality
-3. Responsive design
-4. Animation integration
-5. Performance optimization
+Development Order:
+1. Complete mobile design (390px)
+2. Test smaller screens (iPhone SE – 375px)
+3. Test larger phones (iPhone 14 Pro Max – 428px)
+4. Add tablet adaptations (768px+)
+5. Finalize desktop layouts (1024px+)
 
-#### Quality Checks
-- Design system compliance
-- Accessibility testing
-- Performance testing
-- Cross-browser testing
+[Continues with all workflow, testing, and maintenance sections]
 
-### 2. Testing Strategy
+## Quality Assurance Checklist
 
-#### Test Types
-- Unit tests
-- Component tests
-- Integration tests
-- Performance tests
+### Pre-Release Validation
+- Design token consistency
+- Component behavior across breakpoints
+- Accessibility compliance
+- Performance metrics
+- Documentation accuracy
 
-#### Testing Focus
-- Core functionality
-- Edge cases
-- Accessibility
-- Performance
+### Regular Maintenance
+- Monthly token audit
+- Quarterly component review
+- Bi-annual accessibility audit
+- Annual documentation refresh
 
-### 3. Documentation
+## Version Control
 
-#### Code Documentation
-- TypeScript types
-- Component props
-- Function documentation
-- State management
+### Change Management
+- Major versions: Breaking changes
+- Minor versions: New features
+- Patch versions: Bug fixes
 
-#### Implementation Notes
-- Design decisions
-- Pattern usage
-- Performance considerations
-- Future improvements
+### Documentation Updates
+- Changelog maintenance
+- Migration guides
+- Breaking change notifications
 
-## Technical Considerations
+## Appendix
 
-### 1. Browser Support
+### Useful Resources
+- Tailwind documentation
+- Accessibility guidelines
+- Performance optimization guides
+- Mobile testing tools
 
-#### Primary Support
-- Chrome latest
-- Safari latest
-- Firefox latest
-- Edge latest
-
-#### Mobile Support
-- iOS Safari
-- Chrome for Android
-- Samsung Internet
-
-### 2. Performance Targets
-
-#### Core Web Vitals
-- LCP < 2.5s
-- FID < 100ms
-- CLS < 0.1
-
-#### Animation Performance
-- 60fps target
-- 16ms frame budget
-- Smooth transitions
-- Responsive interactions
-
-### 3. Accessibility Standards
-
-#### WCAG Compliance
-- Level AA compliance
-- Keyboard navigation
-- Screen reader support
-- Color contrast
-
-#### Interactive Elements
-- Focus indicators
-- ARIA labels
-- Role definitions
-- State management
-
-## Current Implementation Focus
-
-### 1. Immediate Priorities
-
-#### Design System Compliance
-- Audit current components
-- Update color implementations
-- Verify typography usage
-- Standardize spacing
-
-#### Performance Optimization
-- Animation performance review
-- Bundle size analysis
-- Loading strategy refinement
-- Memory usage optimization
-
-#### Component Refinement
-- Mobile gesture system enhancement
-- Desktop transformation completion
-- Animation system standardization
-- Interaction pattern standardization
-
-### 2. Technical Improvements
-
-#### Testing Implementation
-- Component test coverage
-- Integration test setup
-- Performance test baseline
-- Accessibility testing
-
-#### Performance Monitoring
-- Core Web Vitals tracking
-- Animation performance metrics
-- Bundle size monitoring
-- Loading performance
-
-#### Error Handling
-- Error boundary implementation
-- Fallback UI components
-- Error tracking setup
-- Recovery patterns
-
-## Feature Roadmap
-
-### 1. Hero Section
-
-#### Current Status (98%)
-- Journey visualization complete
-- Stage management working
-- InfoCard system implemented
-- Responsive layouts working
-
-#### Next Steps
-- Animation performance optimization
-- Loading state refinements
-- Interaction polish
-- Edge case handling
-
-### 2. Pain Points Section
-
-#### Current Status (75%)
-- Card system implemented
-- Basic gestures working
-- Content management setup
-- Animation foundation laid
-
-#### Next Steps
-- Complete desktop transformation
-- Enhance gesture system
-- Refine animations
-- Optimize performance
-
-### 3. Future Features
-
-#### Content Hub
-- Resource management
-- Content filtering
-- Search functionality
-- Dynamic loading
-
-#### User Journey
-- Progress tracking
-- Personalization
-- Analytics integration
-- Performance monitoring
-
-## Development Guidelines
-
-### 1. Code Implementation
-
-#### Component Development
-- Mobile-first approach
-- Design system compliance
-- Performance considerations
-- Accessibility standards
-
-#### State Management
-- Local vs shared state
-- Event handling patterns
-- Data flow architecture
-- Cache management
-
-### 2. Quality Assurance
-
-#### Testing Requirements
-- Unit test coverage
-- Integration testing
-- Performance testing
-- Accessibility checks
-
-#### Performance Standards
-- Animation performance
-- Bundle optimization
-- Loading strategies
-- Memory management
-
-### 3. Documentation
-
-#### Code Documentation
-- Component documentation
-- Type definitions
-- Function documentation
-- State management
-
-#### Implementation Notes
-- Pattern usage
-- Performance considerations
-- Future improvements
-- Known limitations
-
-## Technical Evolution
-
-### 1. Near-Term Improvements
-
-#### Component System
-- Pattern refinement
-- Reusability enhancement
-- Performance optimization
-- Documentation improvement
-
-#### Infrastructure
-- Testing framework
-- Monitoring setup
-- Error handling
-- Analytics integration
-
-### 2. Future Considerations
-
-#### Feature Expansion
-- Additional sections
-- Enhanced interactivity
-- Advanced animations
-- Personalization
-
-#### Technical Advancement
-- PWA capabilities
-- Performance optimization
-- Analytics enhancement
-- Accessibility improvements
-
-### 3. Maintenance Strategy
-
-#### Regular Updates
-- Design system compliance
-- Performance monitoring
-- Documentation updates
-- Dependency management
-
-#### Quality Maintenance
-- Code review process
-- Testing strategy
-- Performance benchmarks
-- Accessibility standards
+### Contact & Support
+- Design system team contact
+- Issue reporting procedure
+- Feature request process
