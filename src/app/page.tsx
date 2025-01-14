@@ -6,6 +6,7 @@ import { BarChart2, Shield, Users } from "lucide-react";
 import Hero from '@/components/features/hero/Hero';
 import Button from '@/components/ui/Button';
 import { PainPoints } from '@/components/features/pain-points';
+import { CaseStudies } from '@/components/features/case-studies';
 
 export default function Home() {
   return (
@@ -16,8 +17,12 @@ export default function Home() {
       {/* Pain Points Section */}
       <PainPoints />
 
+      {/* Case Studies Section */}
+      <CaseStudies />
+
       {/* Features Section */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 bg-brand-accent2">
+        {/* Rest of the features section remains the same */}
         <div className="max-w-7xl mx-auto">
           <div className="text-center">
             <h2 className="text-[36px] md:text-[48px] font-playfair font-bold text-brand-secondary-500">
