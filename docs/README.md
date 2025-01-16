@@ -1,35 +1,62 @@
-# CorpInsights Documentation
+# CorpInsights Documentation Hub
 
-Welcome to the CorpInsights documentation. This repository contains everything you need to understand and contribute to our project.
+Welcome to the documentation repository for CorpInsights Collective. This hub is your central reference for all project-related documents.
 
-## Documentation Structure
+---
 
-### Design (`/design`)
-- [Design System](./design/design-system.md) - Our comprehensive design system documentation
-  - Color system
-  - Typography
-  - Components
-  - Responsive design
-  - Accessibility standards
+## Table of Contents
 
-### Development (`/development`)
-- [Setup Guide](./development/setup.md) - Getting started with development
+1. [Design](#design)
+2. [Development](#development)
+3. [Templates](#templates)
+4. [Changelog & Version Control](#changelog--version-control)
+5. [Useful Resources](#useful-resources)
+6. [Contact & Support](#contact--support)
 
-### Templates (`/templates`)
-- Component templates
-- Documentation templates
+---
 
-## Key Links
+## 1. Design
 
-- [Project README](../README.md)
-- [Design System](./design/design-system.md)
-- [Setup Guide](./development/setup.md)
+- **Design System Guide:**  
+  Refer to `/design/design-system.md` for comprehensive details on our color system, typography, components, responsive design, and accessibility standards.
 
-## Documentation Updates
+---
 
-When updating documentation:
-1. Keep content clear and concise
-2. Include practical examples
-3. Test all code snippets
-4. Update related docs
-5. Follow markdown best practices
+## 2. Development
+
+- **Development Setup Guide:**  
+  All steps for setting up your local environment, workflow, testing, and deployment are detailed in `/development-setup.md`.
+
+---
+
+## 3. Templates
+
+- **Component & Documentation Templates:**  
+  Find reusable templates for components and documentation in the `/templates/` folder.
+
+---
+
+## 4. Changelog & Version Control
+
+- **Changelog:**  
+  Document major, minor, and patch changes here.
+- **Migration Guides:**  
+  Include information on breaking changes and required updates during version transitions.
+
+---
+
+## 5. Useful Resources
+
+- Tailwind CSS documentation (external resource)
+- Next.js documentation (external resource)
+- WCAG Accessibility Guidelines (external resource)
+- Performance Optimization Guides (external resource)
+
+---
+
+## 6. Contact & Support
+
+- **Design System Team Contact:**  
+  Refer to internal support guidelines.
+- **Issue Reporting & Feature Requests:**  
+  Follow the established procedures in our internal support documentation.

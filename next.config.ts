@@ -10,6 +10,14 @@ const config: NextConfig = withPWA({
   reactStrictMode: true,
   images: {
     domains: [], // Add any image domains you'll use
+  },
+  transpilePackages: ['three', '@react-three/fiber', '@react-three/drei'],
+  webpack: (config) => {
+    config.externals = config.externals || [];
+    config.externals.push({
+      'sharp': 'commonjs sharp'
+    });
+    return config;
   }
 });
 
