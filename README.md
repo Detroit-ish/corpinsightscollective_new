@@ -41,13 +41,42 @@ cd corpinsightscollective_new
 npm install
 Development Commands
 Start Development Server:
+```bash
 npm run dev
+```
+
 Run Tests:
+```bash
 npm run test
+```
+
 Build Production Version:
+```bash
 npm run build
+```
+
 Start Production Server:
+```bash
 npm run start
+```
+
+### Testing Strategy
+Our project follows a "functionality-first" testing approach:
+
+1. Development Testing (`/test` route):
+   - Focus on component behavior and core functionality
+   - Use basic Tailwind classes for layout
+   - Ignore custom design system elements initially
+   - Verify user interactions and data flow
+
+2. Production Integration:
+   - Implement full design system styling
+   - Apply custom brand colors and gradients
+   - Fine-tune spacing and visual details
+   - Match exact design specifications
+
+This separation allows rapid feature development while maintaining high design standards in production.
+
 Technology Stack
 Framework: Next.js 15.0.2
 UI Library: React 18.2.0
