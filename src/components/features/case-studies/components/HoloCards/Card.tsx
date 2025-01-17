@@ -1,97 +1,105 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { HoloCardProps } from '../../types';
-import { VISUAL_SPECS } from '../../constants';
-import { Content } from './Content';
-import { cn } from '@/lib/utils/cn';
+import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { useFlip } from '../../hooks/useFlip';
+import type { HoloCardProps } from '../../types';
+import { DEVICE_SPECS } from '../../constants';
 
-export const Card = ({
-  study,
-  className,
-  onFlip,
-  children
-}: HoloCardProps) => {
-  const [isHovered, setIsHovered] = useState(false);
-  
-  return (
-    <article 
-      className={cn(
-        // Base card structure
-        'w-full max-w-[390px] relative',
-        'aspect-[3/4] overflow-hidden',
-        // Design system surface with proper shadows
-        'bg-brand-neutral-white rounded-lg',
-        'shadow-sm hover:shadow-md',
-        'transition-all duration-200',
-        className
-      )}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      onClick={() => onFlip?.(true)}
-    >
-      <div className="h-full flex flex-col p-8">
-        {/* Category Tag */}
-        <div className={cn(
-          'inline-block self-start',
-          'px-4 py-1.5 rounded-full',
-          'bg-brand-primary-50/80',
-          'font-montserrat text-sm font-medium',
-          'text-brand-primary-600'
-        )}>
-          {study.category}
+export const Card = ({ study, className = '', onFlip }: HoloCardProps) => {
+  const [isMounted, setIsMounted] = useState(false);
+  const { isFlipped, handleFlip } = useFlip({ onFlip });
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  // Only render interactive elements after mount
+  if (!isMounted) {
+    return (
+      <div className={`relative w-full max-w-sm h-96 ${className}`}>
+        <div className="w-full h-full bg-white rounded-lg p-6 shadow-lg">
+          <h3 className="text-xl font-bold mb-4">{study.faces[0].title}</h3>
+          {study.faces[0].metrics && (
+            <div className="grid grid-cols-2 gap-4">
+              {study.faces[0].metrics.map((metric) => (
+                <div 
+                  key={metric.label}
+                  className={`text-center ${metric.emphasis ? 'font-bold' : ''}`}
+                >
+                  <div className="text-2xl">{metric.value}</div>
+                  <div className="text-sm">{metric.label}</div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
-
-        {/* Title */}
-        <h3 className={cn(
-          'mt-6',
-          'font-playfair text-[28px] leading-tight',
-          'text-brand-secondary-500'
-        )}>
-          {study.faces[0].title}
-        </h3>
-
-        {/* Spacer */}
-        <div className="flex-grow" />
-
-        {/* Metrics Grid */}
-        {study.faces[0].metrics && (
-          <div className="grid grid-cols-2 gap-6 mb-8">
-            {study.faces[0].metrics.map((metric) => (
-              <div 
-                key={metric.label}
-                className={cn(
-                  'flex flex-col items-center justify-center p-4',
-                  'rounded-lg bg-brand-accent2'
-                )}
-              >
-                <span className={cn(
-                  'font-montserrat text-[32px] font-bold leading-none',
-                  'text-brand-accent1-500'
-                )}>
-                  {metric.value}
-                </span>
-                <span className={cn(
-                  'mt-2 text-sm text-center',
-                  'text-brand-secondary-400'
-                )}>
-                  {metric.label}
-                </span>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {/* Client Attribution */}
-        <p className={cn(
-          'font-montserrat text-sm',
-          'text-brand-secondary-400'
-        )}>
-          {study.clientName}
-        </p>
       </div>
+    );
+  }
 
-      {children}
-    </article>
+  const handleClick = () => {
+    console.log('Card clicked - flipping...');
+    handleFlip();
+  };
+
+  const variants = {
+    front: {
+      rotateY: 0,
+      transition: { duration: 0.3 }
+    },
+    back: {
+      rotateY: 180,
+      transition: { duration: 0.3 }
+    }
+  };
+
+  return (
+    <div 
+      className={`relative w-full max-w-sm h-96 ${className}`}
+      style={{ perspective: '1200px', transformStyle: 'preserve-3d' }}
+    >
+      <motion.div
+        className="w-full h-full relative transform-gpu cursor-pointer [transform-style:preserve-3d] [transform-origin:center_center]"
+        animate={isFlipped ? 'back' : 'front'}
+        variants={variants}
+        onClick={handleClick}
+      >
+        {/* Front Face */}
+        <motion.div 
+          className={`absolute w-full h-full [backface-visibility:hidden] [transform-style:preserve-3d] [will-change:transform] [transform-origin:center_center]
+            ${isFlipped ? 'pointer-events-none' : 'pointer-events-auto'}
+            bg-white rounded-lg p-6 shadow-lg`}
+        >
+          <h3 className="text-xl font-bold mb-4">{study.faces[0].title}</h3>
+          {study.faces[0].metrics && (
+            <div className="grid grid-cols-2 gap-4">
+              {study.faces[0].metrics.map((metric) => (
+                <div 
+                  key={metric.label}
+                  className={`text-center ${metric.emphasis ? 'font-bold' : ''}`}
+                >
+                  <div className="text-2xl">{metric.value}</div>
+                  <div className="text-sm">{metric.label}</div>
+                </div>
+              ))}
+            </div>
+          )}
+        </motion.div>
+
+        {/* Back Face */}
+        <motion.div 
+          className={`absolute w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] [transform-style:preserve-3d] [will-change:transform] [transform-origin:center_center]
+            ${isFlipped ? 'pointer-events-auto' : 'pointer-events-none'}
+            bg-white rounded-lg p-6 shadow-lg overflow-y-auto`}
+        >
+          <h3 className="text-xl font-bold mb-4">{study.faces[1].title}</h3>
+          <div className="prose prose-sm max-w-none whitespace-pre-wrap">
+            {study.faces[1].content}
+          </div>
+        </motion.div>
+      </motion.div>
+    </div>
   );
 };
+        

@@ -189,6 +189,40 @@ export default function Page() {
 }
 ```
 
+## Testing Approach
+
+### Component Testing Strategy
+When testing components, we follow a "functionality-first" approach:
+
+1. Phase 1: Core Functionality
+   - Focus on component behavior and interactions
+   - Use basic Tailwind classes for layout structure
+   - Ignore custom styling, gradients, and precise spacing
+   - Verify data flow and user interactions work correctly
+
+2. Phase 2: Design System Integration
+   - Integrate custom brand colors and gradients
+   - Apply exact spacing and padding
+   - Implement precise visual styling
+   - Match production design specifications
+
+Note: The test environment (`/test` route) intentionally uses basic Tailwind classes
+instead of our custom design system. This separation allows faster development and
+testing of core functionality without waiting for design system integration.
+
+### Testing Guidelines
+- Core layout classes (grid, flex) should be included in tests
+- Basic spacing for usability is acceptable
+- Custom brand colors and gradients should be added after core functionality works
+- Use simple Tailwind alternatives for custom classes in tests:
+  ```typescript
+  // In tests:
+  'bg-blue-500'    // Instead of 'bg-gradient-professional'
+  'text-gray-800'  // Instead of 'text-brand-secondary-500'
+  ```
+
+This approach ensures we can rapidly iterate on functionality while maintaining a clear path to production-ready styling.
+
 ## Development Status
 
 ### Current Focus
