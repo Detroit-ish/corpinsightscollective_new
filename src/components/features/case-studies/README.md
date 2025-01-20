@@ -51,40 +51,40 @@ const INTERACTION_LIMITS = {
 Goal: Setup base card component with proper structure and mobile layout
 
 1. TypeScript Setup
-   - Define CaseStudy interface
-   - Define card props and event types
-   - Setup any utility types we need
+   - ~~Define CaseStudy interface~~
+   - ~~Define card props and event types~~
+   - ~~Setup any utility types we need~~
 
 2. Component Structure
-   - Create base Card component
-   - Define front face layout
-   - Setup container dimensions (390px base)
-   - Add basic interaction props
+   - ~~Create base Card component~~
+   - ~~Define front face layout~~
+   - ~~Setup container dimensions (390px base)~~
+   - ~~Add basic interaction props~~
 
 3. Content Structure
-   - Implement metric display layout
-   - Setup typography (from design system)
-   - Setup responsive scaling
-   - Test content overflow
+   - ~~Implement metric display layout~~
+   - ~~Setup typography (from design system)~~
+   - ~~Setup responsive scaling~~
+   - ~~Test content overflow~~
 
 4. Mobile Foundation
-   - Verify iPhone 12 Pro layout
-   - Setup touch targets
-   - Handle safe areas
-   - Test viewport behavior
+   - ~~Verify iPhone 12 Pro layout~~
+   - ~~Setup touch targets~~
+   - ~~Handle safe areas~~
+   - ~~Test viewport behavior~~
 
 5. Testing Points
-   - Content rendering
-   - Mobile layout
+   - ~~Content rendering~~
+   - ~~Mobile layout~~
    - Design system integration
-   - Type safety
+   - ~~Type safety~~
 
 ### Phase 2: Core Interaction
-- Framer Motion integration
-- Flip state management
+- ~~Framer Motion integration~~
+- ~~Flip state management~~
 - Performance boundaries
-- Touch/click handlers
-- Animation timings
+- ~~Touch/click handlers~~
+- ~~Animation timings~~
 
 ### Phase 3: Content & Scroll
 - Back face scroll implementation

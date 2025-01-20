@@ -2,33 +2,14 @@
 
 import { Card } from './components/HoloCards';
 import { cn } from '@/lib/utils/cn';
+import { TEST_CASES } from './__tests__/fixtures/test-cases';
 
 interface CaseStudiesProps {
   className?: string;
 }
 
-const TEST_DATA = {
-  id: 'test-case-1',
-  category: 'Sales Automation',
-  clientName: 'TechStart Solutions',
-  featured: true,
-  faces: [
-    {
-      id: 'front',
-      title: '42% More Conversions—No Shady Tactics (Test)',
-      content: '',
-      metrics: [
-        { value: '42%', label: 'Conversion Increase' },
-        { value: '2wks', label: 'Implementation Time' }
-      ]
-    },
-    {
-      id: 'back',
-      title: 'How We Did It (Test)',
-      content: 'TEST BACK FACE',      
-    }
-  ]
-};
+// Using our longest test case for scroll testing
+const caseStudy = TEST_CASES[2];
 
 export const CaseStudies = ({
   className
@@ -49,7 +30,7 @@ export const CaseStudies = ({
         {/* Card Test Display */}
         <div className="max-w-[390px] mx-auto">
           <Card 
-            study={TEST_DATA}
+            study={caseStudy}
             className="test-case-study-card"
           />
         </div>

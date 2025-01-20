@@ -22,8 +22,12 @@ export const useFlip = ({
   }, [cooldown]);
 
   const handleFlip = useCallback(() => {
-    if (!canFlip()) return;
+    if (!canFlip()) {
+      console.log('Flip prevented - cooldown active');
+      return;
+    }
 
+    console.log('Flipping card...');
     setIsFlipping(true);
     lastFlipTime.current = Date.now();
 
