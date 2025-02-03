@@ -57,13 +57,15 @@ Goal: Setup base card component with proper structure and mobile layout
 
 2. Component Structure
    - ~~Create base Card component~~
-   - ~~Define front face layout~~
+   - Front face layout
+     - ~~Basic structure~~
+     - Metric grid layout refinement
    - ~~Setup container dimensions (390px base)~~
    - ~~Add basic interaction props~~
 
 3. Content Structure
-   - ~~Implement metric display layout~~
-   - ~~Setup typography (from design system)~~
+   - ~~Implement metric display~~
+   - ~~Setup typography~~
    - ~~Setup responsive scaling~~
    - ~~Test content overflow~~
 
@@ -82,22 +84,36 @@ Goal: Setup base card component with proper structure and mobile layout
 ### Phase 2: Core Interaction
 - ~~Framer Motion integration~~
 - ~~Flip state management~~
-- Performance boundaries
+- ~~Performance boundaries~~
 - ~~Touch/click handlers~~
 - ~~Animation timings~~
+- Front card metric layout improvements
+  - Dynamic grid system
+  - Proper metric alignment
+  - Emphasis on featured metrics
+- Multiple card handling
+  - Grid/carousel for card sets
+  - Card positioning and spacing
+  - Mobile swipe behavior
 
 ### Phase 3: Content & Scroll
-- Back face scroll implementation
-- Content height management
-- Touch event handling
-- Scroll performance
+- ~~Back face scroll implementation~~
+- ~~Content height management~~
+- ~~Touch event handling~~
+- ~~Scroll performance~~
 - Edge case handling
+  - Dynamic content resizing
+  - Loading states
+  - Error boundaries
 
 ### Phase 4: Visual Enhancement
 - WebGL setup and integration
 - Shader implementation
 - State sync between React/WebGL
 - Performance optimization
+  - Animation frame limiting
+  - Memory management
+  - Touch event throttling
 - Fallback handling
 
 ### Phase 5: Integration & Polish

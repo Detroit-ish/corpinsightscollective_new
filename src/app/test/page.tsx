@@ -1,4 +1,4 @@
-import { CaseStudies } from '@/components/features/case-studies';
+import SingleCardTest from '@/components/features/case-studies/__tests__/SingleCardTest';
 
 export default function TestPage() {
   return (
@@ -12,7 +12,7 @@ export default function TestPage() {
       </header>
 
       {/* Test Component */}
-      <CaseStudies />
+      <SingleCardTest />
 
       {/* Test Documentation */}
       <footer className="container mx-auto px-4 py-8">

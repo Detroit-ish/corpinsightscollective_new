@@ -1,33 +1,39 @@
 /**
  * Test cases for case study cards with varying content lengths and styles
+ * Each case follows our established design pattern:
+ * - Clean header with category and timeframe
+ * - Clear primary metric with emphasis
+ * - Casual, straight-shooting tone
  */
 
 export const TEST_CASES = [
   // Case 1: Minimal Content
   {
-    id: 'minimal-case',
-    category: 'Quick Win',
-    clientName: 'StartupQuick',
-    featured: false,
+    id: 'system-build-297',
+    category: 'System Build',
+    clientName: 'TechCo',
+    featured: true,
     faces: [
       {
         id: 'front',
-        title: 'Email Open Rates Doubled',
-        content: '',
+        title: 'System Build',
+        content: 'Done in 90',
         metrics: [
-          { value: '2x', label: 'Open Rate', emphasis: true }
+          { value: '297%', label: 'Revenue Growth', emphasis: true }
         ] as const
       },
       {
         id: 'back',
-        title: 'The Simple Fix',
+        title: "Here's How We Did It",
         content: `
-We adjusted email send times based on user activity patterns. That's it. Sometimes the simplest solutions have the biggest impact.
+We analyzed the existing setup, identified key bottlenecks, and implemented a streamlined system that actually made sense. No fancy buzzwords, just practical improvements that led to real growth.
 
-### Results
-- Open rates went from 18% to 36%
-- Click rates improved by 45%
-- Implementation took 2 days
+Key improvements:
+• Automated follow-ups that don't feel robotic
+• Clear sales process anyone can follow
+• Data tracking that shows what actually works
+
+The best part? The whole system runs itself now, letting the team focus on what they do best.
         `.trim()
       }
     ]
@@ -36,14 +42,14 @@ We adjusted email send times based on user activity patterns. That's it. Sometim
   // Case 2: Medium Content with Lists
   {
     id: 'medium-case',
-    category: 'Marketing Automation',
+    category: 'Email Flow',
     clientName: 'TechFlow Solutions',
     featured: true,
     faces: [
       {
         id: 'front',
-        title: 'Lead Quality Up, Costs Down',
-        content: '',
+        title: 'Email Flow',
+        content: '60 Days Flat',
         metrics: [
           { value: '64%', label: 'Better Leads', emphasis: true },
           { value: '-32%', label: 'Lower Cost' },
@@ -95,14 +101,14 @@ The system keeps improving with more data. Six months later, we're seeing even b
   // Case 3: Maximum Content Length Test
   {
     id: 'max-length-case',
-    category: 'Full Revenue System',
+    category: 'Sales Pipeline',
     clientName: 'Enterprise Corp',
     featured: true,
     faces: [
       {
         id: 'front',
-        title: 'Complete Revenue Transformation',
-        content: '',
+        title: 'Sales Pipeline',
+        content: '1 Month Sharp',
         metrics: [
           { value: '212%', label: 'Revenue Up', emphasis: true },
           { value: '6mo', label: 'Timeline' },

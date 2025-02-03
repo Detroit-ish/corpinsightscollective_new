@@ -39,7 +39,7 @@ export const useFlip = ({
 
     setTimeout(() => {
       setIsFlipping(false);
-    }, 300); // Match this with Framer Motion duration
+    }, 600); // Match Framer Motion duration
   }, [canFlip, onFlip]);
 
   const resetFlip = useCallback(() => {

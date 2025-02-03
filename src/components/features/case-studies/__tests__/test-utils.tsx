@@ -1,5 +1,5 @@
 import { CaseStudy } from '../types';
-import { DEVICE_SPECS, VISUAL_SPECS } from '../constants';
+import { DEVICE_SPECS } from '../constants';
 
 export const mockCaseStudy: CaseStudy = {
   id: 'test-case-1',
@@ -15,6 +15,19 @@ export const mockCaseStudy: CaseStudy = {
         { value: '42%', label: 'Conversion Increase' },
         { value: '2wks', label: 'Implementation Time' }
       ]
+    },
+    {
+      id: 'back',
+      title: 'How We Did It',
+      content: `Our team worked closely with TechStart Solutions to implement an intelligent lead scoring system that prioritized quality over quantity. By analyzing historical conversion data, we identified key behavioral patterns that indicated high-intent prospects.
+
+Key Implementation Steps:
+1. Data Analysis & Pattern Recognition
+2. Custom Scoring Algorithm Development
+3. A/B Testing Framework Setup
+4. Real-time Adjustment System
+
+The new system allowed the sales team to focus their efforts on the most promising leads, resulting in higher conversion rates without aggressive tactics.`
     }
   ]
 };
@@ -23,10 +36,4 @@ export const mockCaseStudy: CaseStudy = {
 export const mobileViewport = {
   width: DEVICE_SPECS.defaultWidth,
   height: DEVICE_SPECS.defaultHeight
-};
-
-// Helper to verify design system classes
-export const hasDesignSystemClass = (element: HTMLElement, classSet: string) => {
-  const classes = classSet.split(' ');
-  return classes.every(className => element.classList.contains(className));
 };
