@@ -1,13 +1,10 @@
 "use client";
 
-import { MoveVertical } from 'lucide-react';
-import { motion, useScroll, useSpring } from 'framer-motion';
-import { useState, useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
+import { useRef } from 'react';
 import { useFlip } from '../../hooks/useFlip';
 import type { HoloCardProps } from '../../types';
 import { DEVICE_SPECS } from '../../constants';
-
-import { ChevronRight } from 'lucide-react';
 import { PlaceholderImage } from '@/components/ui/placeholder-image';
 
 const CardContent = ({ study, onFlip }: HoloCardProps & { onFlip: () => void }) => {
@@ -38,13 +35,15 @@ const CardContent = ({ study, onFlip }: HoloCardProps & { onFlip: () => void }) 
         </div>
       </div>
 
-      {/* CTA Button */}
+      {/* Flip Indicator Animation */}
       <div className="absolute bottom-4 right-4 flex gap-1.5 opacity-80">
         {[0, 1, 2].map((i) => (
           <motion.div
             key={i}
             className="w-1.5 h-1.5 rounded-full bg-gradient-to-br from-teal-400/20 to-teal-500"
-            animate={{ opacity: [0.3, 0.7, 0.3] }}
+            animate={{
+              opacity: [0.3, 0.7, 0.3]
+            }}
             transition={{
               duration: 1.5,
               delay: i * 0.2,
@@ -59,13 +58,6 @@ const CardContent = ({ study, onFlip }: HoloCardProps & { onFlip: () => void }) 
 
 export const Card = ({ study, className = '', onFlip }: HoloCardProps) => {
   const { isFlipped, isFlipping, handleFlip } = useFlip({ onFlip });
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ container: scrollRef });
-  const scrollProgress = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
 
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -98,7 +90,7 @@ export const Card = ({ study, className = '', onFlip }: HoloCardProps) => {
         <motion.div 
           className={`absolute w-full h-full [backface-visibility:hidden] [transform-style:preserve-3d] [will-change:transform] [transform-origin:center_center]
             ${isFlipped ? 'pointer-events-none' : 'pointer-events-auto'}
-            bg-white rounded-lg p-6 shadow-lg border border-blue-200 transition-shadow hover:shadow-xl`}
+            bg-white rounded-lg p-6 shadow-lg border border-blue-200/60 transition-all hover:shadow-xl hover:-translate-y-0.5`}
         >
           <CardContent study={study} onFlip={handleClick} />
         </motion.div>
@@ -107,19 +99,23 @@ export const Card = ({ study, className = '', onFlip }: HoloCardProps) => {
         <motion.div 
           className={`absolute w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] [transform-style:preserve-3d] [will-change:transform] [transform-origin:center_center]
             ${isFlipped ? 'pointer-events-auto' : 'pointer-events-none'}
-            bg-white rounded-lg p-6 shadow-lg overflow-hidden`}
+            bg-white rounded-lg p-6 shadow-lg overflow-hidden border border-blue-200/60`}
         >
-          
-          {/* Content Container */}
-          <div 
-            ref={scrollRef}
-            className="relative h-full overflow-y-auto overscroll-contain scrollbar-none"
-          >
-            <h3 className="text-xl font-bold mb-4">{study.faces[1].title}</h3>
-            <div className="text-gray-700 space-y-4 whitespace-pre-wrap pb-12">
-              {study.faces[1].content}
+          {/* Content Container with Scroll */}
+          <div className="relative h-full">
+            <div className="absolute inset-0 overflow-y-auto scrollbar-none">
+              <div className="space-y-4 pb-16"> {/* Padding for fade */}
+                <h3 className="text-xl font-bold">{study.faces[1].title}</h3>
+                <div className="text-gray-700 whitespace-pre-wrap">
+                  {study.faces[1].content}
+                </div>
+              </div>
             </div>
-            <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent pointer-events-none" />
+
+            {/* Fade Effect */}
+            <div className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none">
+              <div className="absolute inset-0 bg-gradient-to-t from-white via-white/90 to-transparent" />
+            </div>
           </div>
         </motion.div>
       </motion.div>
